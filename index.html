@@ -2,154 +2,154 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>ZH | Web3 Premium</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;scroll-behavior:smooth;}
-body{
-  background:linear-gradient(-45deg,#0f0f0f,#0f172a,#1e1b4b,#000000);
-  background-size:400% 400%;
-  animation:bgMove 12s ease infinite;
-  color:white;
-  overflow-x:hidden;
-}
-@keyframes bgMove{
-  0%{background-position:0% 50%;}
-  50%{background-position:100% 50%;}
-  100%{background-position:0% 50%;}
+/* Base + Dark Background */
+body, html {
+  margin: 0; padding: 0;
+  width: 100%; height: 100%;
+  background: #020207;
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  scroll-behavior: smooth;
 }
 
-/* Floating particles */
-.particles span{
-  position:absolute;
-  width:6px;height:6px;
-  background:#7c3aed;
-  border-radius:50%;
-  animation:float 10s linear infinite;
-  opacity:0.7;
-}
-@keyframes float{
-  from{transform:translateY(100vh);}
-  to{transform:translateY(-10vh);}
+/* Gradient Animated Background */
+@keyframes bgAnim {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-/* Navbar */
-.navbar{
-  position:fixed;
-  width:100%;
-  top:0;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:20px 30px;
-  backdrop-filter:blur(15px);
-  background:rgba(255,255,255,0.05);
-  z-index:1000;
+body {
+  background: linear-gradient(-45deg, #020207, #0d0d0f, #1c003f, #000014);
+  background-size: 400% 400%;
+  animation: bgAnim 15s ease infinite;
 }
 
-/* Neon Logo */
-.logo{
-  font-size:28px;
-  font-weight:bold;
-  letter-spacing:3px;
-  color:#00f5ff;
-  text-shadow:0 0 10px #00f5ff,0 0 20px #7c3aed,0 0 40px #7c3aed;
-  animation:glow 2s ease-in-out infinite alternate;
+/* Navbar + Hamburger */
+.navbar {
+  position: fixed; top: 0; width: 100%;
+  display: flex; justify-content: space-between;
+  align-items: center; padding: 18px 30px;
+  backdrop-filter: blur(12px);
+  background: rgba(0,0,0,0.65);
+  z-index: 999;
 }
-@keyframes glow{
-  from{text-shadow:0 0 10px #00f5ff;}
-  to{text-shadow:0 0 25px #7c3aed,0 0 50px #00f5ff;}
-}
-
-/* Hamburger */
-.hamburger{width:30px;height:22px;position:relative;cursor:pointer;}
-.hamburger span{
-  position:absolute;width:100%;height:3px;background:white;border-radius:5px;transition:0.4s;
-}
-.hamburger span:nth-child(1){top:0;}
-.hamburger span:nth-child(2){top:9px;}
-.hamburger span:nth-child(3){top:18px;}
-.hamburger.active span:nth-child(1){transform:rotate(45deg);top:9px;}
-.hamburger.active span:nth-child(2){opacity:0;}
-.hamburger.active span:nth-child(3){transform:rotate(-45deg);top:9px;}
-
-/* Sidebar */
-.sidebar{
-  position:fixed;left:-260px;top:0;height:100%;width:260px;
-  backdrop-filter:blur(25px);
-  background:rgba(255,255,255,0.08);
-  padding-top:100px;transition:0.4s;
-}
-.sidebar.active{left:0;}
-.sidebar a{
-  display:block;padding:18px 30px;color:white;text-decoration:none;
-  transition:0.3s;
-}
-.sidebar a:hover{background:rgba(255,255,255,0.1);}
-
-/* Sections */
-section{
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:40px;
+.logo {
+  font-size: 30px; font-weight: bold;
+  letter-spacing: 3px;
+  color: #00f5ff;
+  text-shadow: 0 0 15px #00f5ff, 0 0 30px #7c3aed;
 }
 
-.glass{
-  backdrop-filter:blur(20px);
-  background:rgba(255,255,255,0.08);
-  padding:50px;
-  border-radius:20px;
-  border:1px solid rgba(255,255,255,0.1);
-  opacity:0;
-  transform:translateY(40px);
-  transition:1s ease;
+/* Hamburger Animation */
+.hamburger {
+  width: 30px; height: 24px; cursor: pointer;
+  display: flex; flex-direction: column;
+  justify-content: space-between;
 }
-.glass.show{
-  opacity:1;
-  transform:translateY(0);
+.hamburger span {
+  background: white; height: 3px; border-radius: 3px;
+  transition: 0.4s;
 }
-
-/* Buttons */
-.social a{
-  display:inline-block;margin:10px;padding:12px 25px;
-  border-radius:30px;
-  text-decoration:none;color:white;
-  background:linear-gradient(90deg,#2563eb,#7c3aed);
-  transition:0.3s;
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px,6px);
 }
-.social a:hover{
-  transform:scale(1.1);
-  box-shadow:0 0 20px #7c3aed;
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px,-6px);
 }
 
-/* Responsive */
-@media(max-width:768px){
-  .glass{padding:25px;}
+/* Sidebar + Overlay */
+.sidebar {
+  position: fixed; top: 0; left: -260px;
+  width: 260px; height: 100%;
+  background: #07070a; backdrop-filter: blur(22px);
+  transition: 0.4s ease;
+  padding-top: 100px; z-index: 998;
+}
+.sidebar.active { left: 0; }
+.sidebar a {
+  display: block; padding: 18px 30px;
+  color: white; text-decoration: none;
+  font-size: 18px;
+  transition: 0.3s;
+}
+.sidebar a:hover {
+  padding-left: 40px;
+  color: #7c3aed;
+}
+
+/* Overlay */
+.overlay {
+  position: fixed; top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(0,0,0,0.7);
+  opacity: 0; visibility:hidden;
+  transition: 0.4s;
+  z-index: 997;
+}
+.overlay.active { opacity: 1; visibility: visible; }
+
+/* Hero Section */
+.hero {
+  height: 100vh;
+  display: flex; justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+}
+.hero h1 {
+  font-size: 56px; font-weight: 900;
+  background: linear-gradient(90deg, #00f5ff, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textGlow 2s ease-in-out infinite alternate;
+}
+@keyframes textGlow {
+  from { text-shadow: 0 0 10px #00f5ff; }
+  to { text-shadow: 0 0 30px #7c3aed, 0 0 60px #00f5ff; }
+}
+.hero p { font-size: 20px; opacity: 0.85; margin-top: 10px; }
+
+/* Sections + Reveal */
+section {
+  padding: 80px 20px; text-align: center;
+}
+.reveal {
+  opacity: 0; transform: translateY(30px);
+  transition: 1s ease-out;
+}
+.reveal.active {
+  opacity: 1; transform: translateY(0);
+}
+
+/* Button Styles */
+.btn {
+  margin-top: 20px;
+  padding: 12px 28px;
+  background: linear-gradient(90deg, #2563eb,#7c3aed);
+  border-radius: 30px;
+  color: white; text-decoration: none;
+  font-size: 18px;
+  transition: 0.3s;
+}
+.btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 22px #7c3aed;
 }
 </style>
 </head>
 
 <body>
 
-<div class="particles">
-  <!-- 20 floating particles -->
-  <span style="left:5%;animation-duration:8s;"></span>
-  <span style="left:15%;animation-duration:12s;"></span>
-  <span style="left:25%;animation-duration:10s;"></span>
-  <span style="left:35%;animation-duration:14s;"></span>
-  <span style="left:45%;animation-duration:9s;"></span>
-  <span style="left:55%;animation-duration:11s;"></span>
-  <span style="left:65%;animation-duration:13s;"></span>
-  <span style="left:75%;animation-duration:10s;"></span>
-  <span style="left:85%;animation-duration:12s;"></span>
-  <span style="left:95%;animation-duration:15s;"></span>
-</div>
-
+<!-- Navbar -->
 <div class="navbar">
   <div class="hamburger" onclick="toggleMenu(this)">
     <span></span><span></span><span></span>
@@ -157,51 +157,61 @@ section{
   <div class="logo">ZH</div>
 </div>
 
+<!-- Sidebar -->
 <div class="sidebar" id="sidebar">
   <a href="#home">Home</a>
   <a href="#about">About</a>
-  <a href="#social">Social</a>
+  <a href="#contact">Contact</a>
 </div>
 
-<section id="home">
-  <div class="glass">
-    <h1>Welcome to My Web3 Space</h1>
-    <p>Building digital presence with futuristic vibes</p>
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+<!-- Hero -->
+<section class="hero" id="home">
+  <div>
+    <h1>Future Starts Here</h1>
+    <p>Dark-mode Web3 Experience Illuminated</p>
+    <a href="#contact" class="btn">Connect with Me</a>
   </div>
 </section>
 
-<section id="about">
-  <div class="glass">
-    <h2><i class="fa-brands fa-bitcoin"></i> Crypto Enthusiast</h2>
-    <p><i class="fa-solid fa-chart-line"></i> Trading | Web3 | Digital Creator</p>
-  </div>
+<!-- About -->
+<section id="about" class="reveal">
+  <h2>What I Do</h2>
+  <p>Web3 Vision • Digital Identity • Creative Crypto Presence</p>
 </section>
 
-<section id="social">
-  <div class="glass social">
-    <h2>Connect With Me</h2>
-    <a href="https://youtube.com/zeherhassan" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
-    <a href="https://instagram.com/zeherhassanofficial" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-    <a href="https://facebook.com/zeherhassanofficial" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
-    <a href="https://x.com/zeherhassan" target="_blank"><i class="fab fa-x-twitter"></i> X</a>
+<!-- Contact / Social -->
+<section id="contact" class="reveal">
+  <h2>Say Hello 👋</h2>
+  <div>
+    <a href="https://youtube.com/zeherhassan" class="btn" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+    <a href="https://instagram.com/zeherhassanofficial" class="btn" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+    <a href="https://facebook.com/zeherhassanofficial" class="btn" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+    <a href="https://x.com/zeherhassan" class="btn" target="_blank"><i class="fab fa-x-twitter"></i> X</a>
   </div>
 </section>
 
 <script>
-function toggleMenu(x){
+// Sidebar Toggle
+function toggleMenu(x) {
   x.classList.toggle("active");
   document.getElementById("sidebar").classList.toggle("active");
+  document.getElementById("overlay").classList.toggle("active");
+}
+function closeMenu() {
+  document.querySelector(".hamburger").classList.remove("active");
+  document.getElementById("sidebar").classList.remove("active");
+  document.getElementById("overlay").classList.remove("active");
 }
 
-/* Scroll reveal */
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add("show");
-    }
+// Scroll Reveal
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add("active");
   });
 });
-document.querySelectorAll('.glass').forEach(el=>observer.observe(el));
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
 </body>

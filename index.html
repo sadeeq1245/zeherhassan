@@ -2,216 +2,157 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>ZH | Web3 Premium</title>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZH | Cinematic 3D</title>
 
 <style>
-/* Base + Dark Background */
-body, html {
-  margin: 0; padding: 0;
-  width: 100%; height: 100%;
-  background: #020207;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
   font-family: 'Segoe UI', sans-serif;
-  color: white;
-  scroll-behavior: smooth;
 }
 
-/* Gradient Animated Background */
-@keyframes bgAnim {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+body{
+  background:#040404;
+  overflow:hidden;
+  color:white;
 }
 
-body {
-  background: linear-gradient(-45deg, #020207, #0d0d0f, #1c003f, #000014);
-  background-size: 400% 400%;
-  animation: bgAnim 15s ease infinite;
+/* Canvas full screen */
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:0;
 }
 
-/* Navbar + Hamburger */
-.navbar {
-  position: fixed; top: 0; width: 100%;
-  display: flex; justify-content: space-between;
-  align-items: center; padding: 18px 30px;
-  backdrop-filter: blur(12px);
-  background: rgba(0,0,0,0.65);
-  z-index: 999;
-}
-.logo {
-  font-size: 30px; font-weight: bold;
-  letter-spacing: 3px;
-  color: #00f5ff;
-  text-shadow: 0 0 15px #00f5ff, 0 0 30px #7c3aed;
+/* Centered Hero Content */
+.hero{
+  position:relative;
+  z-index:2;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  pointer-events:none;
 }
 
-/* Hamburger Animation */
-.hamburger {
-  width: 30px; height: 24px; cursor: pointer;
-  display: flex; flex-direction: column;
-  justify-content: space-between;
-}
-.hamburger span {
-  background: white; height: 3px; border-radius: 3px;
-  transition: 0.4s;
-}
-.hamburger.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px,6px);
-}
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-.hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px,-6px);
+.hero h1{
+  font-size:90px;
+  letter-spacing:8px;
+  font-weight:800;
+  color:#00ffcc;
+  text-shadow:0 0 25px rgba(0,255,200,0.6);
 }
 
-/* Sidebar + Overlay */
-.sidebar {
-  position: fixed; top: 0; left: -260px;
-  width: 260px; height: 100%;
-  background: #07070a; backdrop-filter: blur(22px);
-  transition: 0.4s ease;
-  padding-top: 100px; z-index: 998;
-}
-.sidebar.active { left: 0; }
-.sidebar a {
-  display: block; padding: 18px 30px;
-  color: white; text-decoration: none;
-  font-size: 18px;
-  transition: 0.3s;
-}
-.sidebar a:hover {
-  padding-left: 40px;
-  color: #7c3aed;
+.hero p{
+  margin-top:20px;
+  font-size:22px;
+  opacity:0.8;
+  letter-spacing:2px;
 }
 
-/* Overlay */
-.overlay {
-  position: fixed; top:0; left:0;
-  width:100%; height:100%;
-  background: rgba(0,0,0,0.7);
-  opacity: 0; visibility:hidden;
-  transition: 0.4s;
-  z-index: 997;
-}
-.overlay.active { opacity: 1; visibility: visible; }
-
-/* Hero Section */
-.hero {
-  height: 100vh;
-  display: flex; justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 0 20px;
-}
-.hero h1 {
-  font-size: 56px; font-weight: 900;
-  background: linear-gradient(90deg, #00f5ff, #7c3aed);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: textGlow 2s ease-in-out infinite alternate;
-}
-@keyframes textGlow {
-  from { text-shadow: 0 0 10px #00f5ff; }
-  to { text-shadow: 0 0 30px #7c3aed, 0 0 60px #00f5ff; }
-}
-.hero p { font-size: 20px; opacity: 0.85; margin-top: 10px; }
-
-/* Sections + Reveal */
-section {
-  padding: 80px 20px; text-align: center;
-}
-.reveal {
-  opacity: 0; transform: translateY(30px);
-  transition: 1s ease-out;
-}
-.reveal.active {
-  opacity: 1; transform: translateY(0);
+.btn{
+  margin-top:40px;
+  padding:14px 40px;
+  border-radius:40px;
+  border:1px solid rgba(0,255,200,0.4);
+  background:rgba(0,255,200,0.05);
+  color:#00ffcc;
+  font-size:18px;
+  cursor:pointer;
+  pointer-events:auto;
+  transition:0.4s ease;
 }
 
-/* Button Styles */
-.btn {
-  margin-top: 20px;
-  padding: 12px 28px;
-  background: linear-gradient(90deg, #2563eb,#7c3aed);
-  border-radius: 30px;
-  color: white; text-decoration: none;
-  font-size: 18px;
-  transition: 0.3s;
-}
-.btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 22px #7c3aed;
+.btn:hover{
+  transform:translateY(-5px);
+  box-shadow:0 0 40px rgba(0,255,200,0.6);
+  background:rgba(0,255,200,0.15);
 }
 </style>
 </head>
 
 <body>
 
-<!-- Navbar -->
-<div class="navbar">
-  <div class="hamburger" onclick="toggleMenu(this)">
-    <span></span><span></span><span></span>
-  </div>
-  <div class="logo">ZH</div>
+<div class="hero">
+  <h1>ZH</h1>
+  <p>Digital Presence. Reimagined.</p>
+  <button class="btn">Explore</button>
 </div>
 
-<!-- Sidebar -->
-<div class="sidebar" id="sidebar">
-  <a href="#home">Home</a>
-  <a href="#about">About</a>
-  <a href="#contact">Contact</a>
-</div>
-
-<div class="overlay" id="overlay" onclick="closeMenu()"></div>
-
-<!-- Hero -->
-<section class="hero" id="home">
-  <div>
-    <h1>Future Starts Here</h1>
-    <p>Dark-mode Web3 Experience Illuminated</p>
-    <a href="#contact" class="btn">Connect with Me</a>
-  </div>
-</section>
-
-<!-- About -->
-<section id="about" class="reveal">
-  <h2>What I Do</h2>
-  <p>Web3 Vision • Digital Identity • Creative Crypto Presence</p>
-</section>
-
-<!-- Contact / Social -->
-<section id="contact" class="reveal">
-  <h2>Say Hello 👋</h2>
-  <div>
-    <a href="https://youtube.com/zeherhassan" class="btn" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
-    <a href="https://instagram.com/zeherhassanofficial" class="btn" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-    <a href="https://facebook.com/zeherhassanofficial" class="btn" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
-    <a href="https://x.com/zeherhassan" class="btn" target="_blank"><i class="fab fa-x-twitter"></i> X</a>
-  </div>
-</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
 
 <script>
-// Sidebar Toggle
-function toggleMenu(x) {
-  x.classList.toggle("active");
-  document.getElementById("sidebar").classList.toggle("active");
-  document.getElementById("overlay").classList.toggle("active");
-}
-function closeMenu() {
-  document.querySelector(".hamburger").classList.remove("active");
-  document.getElementById("sidebar").classList.remove("active");
-  document.getElementById("overlay").classList.remove("active");
+const scene = new THREE.Scene();
+
+const camera = new THREE.PerspectiveCamera(
+  75,
+  window.innerWidth / window.innerHeight,
+  0.1,
+  1000
+);
+camera.position.z = 5;
+
+const renderer = new THREE.WebGLRenderer({ alpha:true, antialias:true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+/* Lights */
+const ambientLight = new THREE.AmbientLight(0x00ffcc, 0.6);
+scene.add(ambientLight);
+
+const pointLight = new THREE.PointLight(0x00ffcc, 2, 100);
+pointLight.position.set(5,5,5);
+scene.add(pointLight);
+
+/* Glass Outer Sphere */
+const outerGeometry = new THREE.SphereGeometry(2, 64, 64);
+const outerMaterial = new THREE.MeshPhysicalMaterial({
+  color: 0x00ffcc,
+  roughness: 0,
+  transmission: 1,
+  thickness: 0.5,
+  transparent: true,
+  opacity: 0.2,
+});
+const outerSphere = new THREE.Mesh(outerGeometry, outerMaterial);
+scene.add(outerSphere);
+
+/* Glowing Core */
+const coreGeometry = new THREE.SphereGeometry(1.2, 64, 64);
+const coreMaterial = new THREE.MeshStandardMaterial({
+  color: 0x00ffaa,
+  emissive: 0x00ffaa,
+  emissiveIntensity: 2,
+});
+const coreSphere = new THREE.Mesh(coreGeometry, coreMaterial);
+scene.add(coreSphere);
+
+/* Animation */
+function animate(){
+  requestAnimationFrame(animate);
+
+  outerSphere.rotation.y += 0.002;
+  coreSphere.rotation.y -= 0.003;
+
+  outerSphere.position.y = Math.sin(Date.now()*0.001) * 0.2;
+  coreSphere.position.y = Math.sin(Date.now()*0.001) * 0.2;
+
+  renderer.render(scene, camera);
 }
 
-// Scroll Reveal
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add("active");
-  });
+animate();
+
+/* Resize */
+window.addEventListener("resize",()=>{
+  camera.aspect = window.innerWidth/window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
 </body>

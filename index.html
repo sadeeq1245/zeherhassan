@@ -1,133 +1,208 @@
 <!DOCTYPE html>
-<html dir='ltr' lang='en'>
-<head class='notranslate'>
-    <meta charset='UTF-8'/>
-    <meta content='width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=5' name='viewport'/>
-    <title>Zeher Hassan | Official</title>
-    
-    <style>
-    /* 1. EXACT PREMIUM COLORS FROM SOURCE.TXT */
-    :root {
-        --themeC: #482dff; [span_0](start_span)/*[span_0](end_span) */
-        --headC: #08102b;  [span_1](start_span)/*[span_1](end_span) */
-        --bodyC: #08102b;  [span_2](start_span)/*[span_2](end_span) */
-        --bodyCa: #989b9f; [span_3](start_span)/*[span_3](end_span) */
-        --bodyB: #fdfcff;  [span_4](start_span)/*[span_4](end_span) */
-        --headerB: #fffdfc; [span_5](start_span)/*[span_5](end_span) */
-        --headerH: 60px;   [span_6](start_span)/*[span_6](end_span) */
-        --fontB: Google Sans Text,Arial,sans-serif; [span_7](start_span)/*[span_7](end_span) */
-    }
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZH | Web3 Premium</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
-    /* DARK MODE OVERRIDES FROM SOURCE.TXT */
-    body.drK {
-        --bodyB: #1e1e1e;   [span_8](start_span)/*[span_8](end_span) */
-        --bodyC: #fffdfc;   [span_9](start_span)/*[span_9](end_span) */
-        --headC: #fffdfc;   [span_10](start_span)/*[span_10](end_span) */
-        --headerB: #252526; [span_11](start_span)/*[span_11](end_span) */
-        --themeC: #1e1e1e;  [span_12](start_span)/*[span_12](end_span) */
-    }
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;scroll-behavior:smooth;}
+body{
+  background:linear-gradient(-45deg,#0f0f0f,#0f172a,#1e1b4b,#000000);
+  background-size:400% 400%;
+  animation:bgMove 12s ease infinite;
+  color:white;
+  overflow-x:hidden;
+}
+@keyframes bgMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
 
-    body {
-        margin: 0; padding: 0;
-        font-family: var(--fontB);
-        color: var(--bodyC);
-        background: var(--bodyB);
-        transition: all 0.3s ease;
-    }
+/* Floating particles */
+.particles span{
+  position:absolute;
+  width:6px;height:6px;
+  background:#7c3aed;
+  border-radius:50%;
+  animation:float 10s linear infinite;
+  opacity:0.7;
+}
+@keyframes float{
+  from{transform:translateY(100vh);}
+  to{transform:translateY(-10vh);}
+}
 
-    /* 2. RESPONSIVE HEADER: LOGO LEFT | NAME CENTER | THEME RIGHT */
-    header {
-        width: 100%; height: var(--headerH);
-        background: var(--headerB);
-        display: flex; align-items: center; justify-content: space-between;
-        position: sticky; top: 0; z-index: 100;
-        box-shadow: 0 0 15px rgba(0,0,0,.07); [span_13](start_span)/*[span_13](end_span) */
-        padding: 0 20px;
-    }
+/* Navbar */
+.navbar{
+  position:fixed;
+  width:100%;
+  top:0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 30px;
+  backdrop-filter:blur(15px);
+  background:rgba(255,255,255,0.05);
+  z-index:1000;
+}
 
-    .logo { font-weight: 900; color: var(--themeC); font-size: 20px; flex: 1; }
-    .site-title { font-weight: 700; text-align: center; flex: 2; letter-spacing: 1px; }
-    .nav-right { flex: 1; display: flex; justify-content: flex-end; align-items: center; gap: 15px; }
+/* Neon Logo */
+.logo{
+  font-size:28px;
+  font-weight:bold;
+  letter-spacing:3px;
+  color:#00f5ff;
+  text-shadow:0 0 10px #00f5ff,0 0 20px #7c3aed,0 0 40px #7c3aed;
+  animation:glow 2s ease-in-out infinite alternate;
+}
+@keyframes glow{
+  from{text-shadow:0 0 10px #00f5ff;}
+  to{text-shadow:0 0 25px #7c3aed,0 0 50px #00f5ff;}
+}
 
-    /* 3. THEME SWITCH (DARK/WHITE) */
-    .themeBtn {
-        cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 20px;
-        background: rgba(0,0,0,0.05);
-        font-size: 11px;
-        font-weight: bold;
-    }
-    .drK .themeBtn { background: rgba(255,255,255,0.1); }
+/* Hamburger */
+.hamburger{width:30px;height:22px;position:relative;cursor:pointer;}
+.hamburger span{
+  position:absolute;width:100%;height:3px;background:white;border-radius:5px;transition:0.4s;
+}
+.hamburger span:nth-child(1){top:0;}
+.hamburger span:nth-child(2){top:9px;}
+.hamburger span:nth-child(3){top:18px;}
+.hamburger.active span:nth-child(1){transform:rotate(45deg);top:9px;}
+.hamburger.active span:nth-child(2){opacity:0;}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg);top:9px;}
 
-    /* 4. EXACT GRADIENT BUTTONS FROM SOURCE.TXT */
-    .astbutton, .infoblogger {
-        background: linear-gradient(99deg, rgba(2,0,36,1) 0%, rgba(0,255,196,1) 0%, rgba(242,242,242,0.9192270658263305) 100%); [span_14](start_span)[span_15](start_span)/*[span_14](end_span)[span_15](end_span) */
-        border: none; color: black; font-family: system-ui; font-size: 16px;
-        text-decoration: none; padding: 12px 25px; cursor: pointer;
-        border-radius: 19px; display: inline-block; margin: 10px; font-weight: 600;
-    }
+/* Sidebar */
+.sidebar{
+  position:fixed;left:-260px;top:0;height:100%;width:260px;
+  backdrop-filter:blur(25px);
+  background:rgba(255,255,255,0.08);
+  padding-top:100px;transition:0.4s;
+}
+.sidebar.active{left:0;}
+.sidebar a{
+  display:block;padding:18px 30px;color:white;text-decoration:none;
+  transition:0.3s;
+}
+.sidebar a:hover{background:rgba(255,255,255,0.1);}
 
-    /* 5. TAREF (PRAISE) & SOCIALS */
-    .hero {
-        min-height: calc(100vh - 60px);
-        display: flex; flex-direction: column;
-        justify-content: center; align-items: center;
-        text-align: center; padding: 20px;
-    }
+/* Sections */
+section{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:40px;
+}
 
-    .praise { max-width: 600px; color: var(--bodyCa); line-height: 1.6; margin: 20px 0; font-size: 15px; }
-    
-    .social-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 20px; }
-    .social-links a { color: inherit; text-decoration: underline; font-size: 13px; font-weight: bold; }
+.glass{
+  backdrop-filter:blur(20px);
+  background:rgba(255,255,255,0.08);
+  padding:50px;
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,0.1);
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s ease;
+}
+.glass.show{
+  opacity:1;
+  transform:translateY(0);
+}
 
-    /* MOBILE ADJUSTMENTS */
-    @media (max-width: 768px) {
-        .site-title { font-size: 14px; }
-        .hero h1 { font-size: 24px; }
-    }
-    </style>
+/* Buttons */
+.social a{
+  display:inline-block;margin:10px;padding:12px 25px;
+  border-radius:30px;
+  text-decoration:none;color:white;
+  background:linear-gradient(90deg,#2563eb,#7c3aed);
+  transition:0.3s;
+}
+.social a:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 20px #7c3aed;
+}
+
+/* Responsive */
+@media(max-width:768px){
+  .glass{padding:25px;}
+}
+</style>
 </head>
-<body id="body">
 
-    <header>
-        <div class="logo">ZH</div>
-        <div class="site-title">ZEHER HASSAN OFFICIAL</div>
-        <div class="nav-right">
-            <div class="themeBtn" onclick="toggleTheme()">SWITCH MODE</div>
-        </div>
-    </header>
+<body>
 
-    <main class="hero">
-        <h1 style="color: var(--headC);">The Digital Visionary</h1>
-        
-        <p class="praise">
-            Zeher Hassan is a distinguished independent security analyst and researcher, known for delivering high-performance digital solutions and infrastructure auditing. With a commitment to "Premium" quality, his work bridges the gap between complex technical security and elegant user experiences.
-        </p>
+<div class="particles">
+  <!-- 20 floating particles -->
+  <span style="left:5%;animation-duration:8s;"></span>
+  <span style="left:15%;animation-duration:12s;"></span>
+  <span style="left:25%;animation-duration:10s;"></span>
+  <span style="left:35%;animation-duration:14s;"></span>
+  <span style="left:45%;animation-duration:9s;"></span>
+  <span style="left:55%;animation-duration:11s;"></span>
+  <span style="left:65%;animation-duration:13s;"></span>
+  <span style="left:75%;animation-duration:10s;"></span>
+  <span style="left:85%;animation-duration:12s;"></span>
+  <span style="left:95%;animation-duration:15s;"></span>
+</div>
 
-        <div style="margin-bottom: 30px;">
-            <a href="https://t.me/extrapromaxnoob" class="astbutton">TELEGRAM CHAT</a>
-            <a href="https://www.zeherhassan.com" class="infoblogger">OFFICIAL SITE</a>
-        </div>
+<div class="navbar">
+  <div class="hamburger" onclick="toggleMenu(this)">
+    <span></span><span></span><span></span>
+  </div>
+  <div class="logo">ZH</div>
+</div>
 
-        <div class="social-links">
-            <a href="#">YouTube</a>
-            <a href="#">Instagram</a>
-            <a href="#">Twitter</a>
-            <a href="#">GitHub</a>
-        </div>
-    </main>
+<div class="sidebar" id="sidebar">
+  <a href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#social">Social</a>
+</div>
 
-    <script>
-        function toggleTheme() {
-            const body = document.getElementById('body');
-            body.classList.toggle('drK');
-            localStorage.setItem('theme', body.classList.contains('drK') ? 'dark' : 'light');
-        }
+<section id="home">
+  <div class="glass">
+    <h1>Welcome to My Web3 Space</h1>
+    <p>Building digital presence with futuristic vibes</p>
+  </div>
+</section>
 
-        if (localStorage.getItem('theme') === 'dark') {
-            document.getElementById('body').classList.add('drK');
-        }
-    </script>
+<section id="about">
+  <div class="glass">
+    <h2><i class="fa-brands fa-bitcoin"></i> Crypto Enthusiast</h2>
+    <p><i class="fa-solid fa-chart-line"></i> Trading | Web3 | Digital Creator</p>
+  </div>
+</section>
+
+<section id="social">
+  <div class="glass social">
+    <h2>Connect With Me</h2>
+    <a href="https://youtube.com/zeherhassan" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+    <a href="https://instagram.com/zeherhassanofficial" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+    <a href="https://facebook.com/zeherhassanofficial" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+    <a href="https://x.com/zeherhassan" target="_blank"><i class="fab fa-x-twitter"></i> X</a>
+  </div>
+</section>
+
+<script>
+function toggleMenu(x){
+  x.classList.toggle("active");
+  document.getElementById("sidebar").classList.toggle("active");
+}
+
+/* Scroll reveal */
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+    }
+  });
+});
+document.querySelectorAll('.glass').forEach(el=>observer.observe(el));
+</script>
+
 </body>
 </html>

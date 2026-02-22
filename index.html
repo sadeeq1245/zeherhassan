@@ -3,164 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZEHER HASSAN // SECURITY AUDITOR</title>
+    <title>ZEHER HASSAN // DIGITAL CREATOR</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
     <style>
-        :root { --accent: #ff003c; }
-        body { background: #000; color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
+        body { background: #0f172a; color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; }
         .mono { font-family: 'JetBrains Mono', monospace; }
-        
-        .hero-name {
-            font-size: clamp(3rem, 8vw, 6rem); 
-            font-weight: 800; 
-            letter-spacing: -0.02em;
-            line-height: 1;
-        }
-
-        section { min-height: 100vh; padding: 120px 8%; display: flex; flex-direction: column; justify-content: center; }
-        
-        .reveal { opacity: 0; transform: translateY(30px); transition: 1.2s cubic-bezier(0.17, 0.67, 0.83, 0.67) all; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
-        .glass-nav {
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .bg-glow {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, #0d0506 0%, #000 100%);
-            z-index: -1;
-        }
-
-        .pill { 
-            background: rgba(255, 255, 255, 0.03); 
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 8px 20px;
-            border-radius: 100px;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .hero-title { font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.1; font-weight: 800; }
+        .screenshot-box { 
+            background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.2) 100%);
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
     </style>
 </head>
-<body>
-    <div class="bg-glow"></div>
+<body class="min-h-screen flex flex-col items-center pt-20 px-6">
 
-    <nav class="fixed top-0 w-full z-50 glass-nav p-5 flex justify-between items-center px-8 md:px-16">
-        <div class="flex items-center gap-4">
-            <div class="bg-rose-600 text-white font-black italic text-xl px-4 py-1">ZH</div>
-            <span class="mono text-[9px] tracking-[0.3em] opacity-40 hidden md:block uppercase">Security_Core_v2</span>
-        </div>
-        <div class="flex gap-8 mono text-[10px] uppercase tracking-widest font-bold">
-            <a href="#home" class="hover:text-rose-500 transition">01. Home</a>
-            <a href="#about" class="hover:text-rose-500 transition">02. Profile</a>
-            <a href="#contact" class="hover:text-rose-500 transition text-rose-500 underline underline-offset-8">Secure_Link</a>
-        </div>
-    </nav>
+    <canvas id="matrix" class="fixed top-0 left-0 w-full h-full -z-10 opacity-10 pointer-events-none"></canvas>
 
-    <section id="home">
-        <div class="max-w-4xl">
-            <div class="flex items-center gap-3 mb-6 reveal">
-                <span class="h-[1px] w-12 bg-rose-600"></span>
-                <h2 class="mono text-rose-500 text-xs tracking-[0.4em] uppercase font-bold">Digital Creator & Auditor</h2>
+    <div class="max-w-3xl w-full text-center space-y-8">
+        <h1 class="hero-title tracking-tight">
+            My Professional <br>
+            <span class="text-rose-500">Security Audit</span> <br>
+            Portfolio in 2026
+        </h1>
+
+        <p class="text-xl text-slate-400 font-medium">
+            by Sadeeq Ul Hassan
+        </p>
+
+        <div class="screenshot-box rounded-xl p-4 md:p-8 mt-12 overflow-hidden">
+            <div class="flex items-center gap-2 mb-6 border-b border-white/10 pb-4">
+                <div class="w-3 h-3 rounded-full bg-rose-500"></div>
+                <div class="w-3 h-3 rounded-full bg-amber-500"></div>
+                <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+                <span class="mono text-[10px] opacity-40 ml-4 uppercase tracking-widest">secure_terminal_v2.exe</span>
             </div>
-            
-            <h1 class="hero-name italic uppercase mb-8 reveal">
-                ZEHER <span class="text-rose-600">HASSAN</span>
-            </h1>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start reveal">
-                <p class="text-zinc-400 text-lg leading-relaxed border-l-2 border-rose-600 pl-6">
+
+            <div class="text-left space-y-6">
+                <h2 class="text-2xl font-bold">Network & App Security Testing</h2>
+                <p class="text-slate-400 leading-relaxed">
                     Specializing in testing network applications and identifying vulnerabilities to build a more secure digital environment.
                 </p>
-                <div class="flex flex-wrap gap-3">
-                    <span class="pill">Bug Hunting</span>
-                    <span class="pill">App Testing</span>
-                    <span class="pill">Network Security</span>
+                
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="/vault" class="bg-rose-600 hover:bg-rose-700 text-white px-6 py-3 rounded-lg font-bold transition">View My Vault</a>
+                    <a href="https://t.me/extrapromaxnoob" target="_blank" class="bg-slate-800 hover:bg-slate-700 text-white px-6 py-3 rounded-lg font-bold transition flex items-center gap-2">
+                        <i data-lucide="send" class="w-4 h-4"></i> Contact
+                    </a>
                 </div>
             </div>
         </div>
-    </section>
 
-    <section id="about" class="bg-white/[0.01]">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            <div class="reveal">
-                <h2 class="text-5xl font-black italic mb-10 uppercase leading-tight">HARDENING THE <br><span class="text-rose-600">ARCHITECTURE.</span></h2>
-                <div class="space-y-6 text-zinc-400 text-lg">
-                    <p>In an era where data is the most valuable asset, I act as the shield. My approach to security is aggressive and meticulous. I don't just look for bugs; I hunt for the logic flaws that others overlook.</p>
-                    <p>Whether it's auditing high-traffic web applications or securing mobile software, I ensure that the architecture is hardened against both known and emerging threats.</p>
-                </div>
-            </div>
-
-            <div class="reveal space-y-4">
-                <div class="p-8 bg-zinc-900/50 border border-white/5 rounded-3xl">
-                    <p class="italic text-zinc-300">"If you spend more on coffee than on IT security, you will be hacked. What's more, you deserve to be hacked." — Richard Clarke</p>
-                </div>
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="p-8 bg-zinc-900/50 border border-white/5 rounded-2xl">
-                        <h4 class="text-rose-600 font-black text-4xl mb-1 italic">100+</h4>
-                        <p class="mono text-[9px] uppercase opacity-40">Vulns Found</p>
-                    </div>
-                    <div class="p-8 bg-zinc-900/50 border border-white/5 rounded-2xl">
-                        <h4 class="text-rose-600 font-black text-4xl mb-1 italic">24/7</h4>
-                        <p class="mono text-[9px] uppercase opacity-40">Monitoring</p>
-                    </div>
-                </div>
-            </div>
+        <div class="pt-20 pb-10 text-slate-500 space-y-6 text-lg leading-relaxed text-left max-w-2xl mx-auto">
+            <p>Today I finalized the architecture for my professional security presence.</p>
+            <p>I completed the deployment in under 3 hours, integrating a custom 404 handler and a secure tool vault. This is a personal best for my digital infrastructure.</p>
+            <p>I could definitely have done it faster, but I wanted the "Access Denied" aesthetics to be perfect for my visitors.</p>
         </div>
-    </section>
-
-    <section id="contact" class="text-center">
-        <div class="max-w-4xl mx-auto reveal">
-            <h2 class="text-6xl md:text-8xl font-black italic uppercase mb-12 leading-none">SECURE <br> <span class="text-rose-600">CONNECTION</span></h2>
-            
-            <a href="https://t.me/extrapromaxnoob" class="inline-flex items-center gap-6 bg-rose-600 hover:bg-white hover:text-black px-12 py-6 rounded-full transition-all group mb-20 shadow-2xl">
-                <span class="text-xl font-black uppercase italic">Initialize Telegram</span>
-                <i data-lucide="arrow-right" class="w-6 h-6 group-hover:translate-x-2 transition"></i>
-            </a>
-
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <a href="https://youtube.com/@zeherhassan" target="_blank" class="p-6 bg-white/5 border border-white/5 rounded-2xl hover:bg-rose-600 transition group">
-                    <i data-lucide="youtube" class="w-6 h-6 mx-auto mb-2 group-hover:text-white"></i>
-                    <span class="mono text-[9px] uppercase font-bold tracking-widest">YouTube</span>
-                </a>
-                <a href="https://instagram.com/zeherhassanofficial" target="_blank" class="p-6 bg-white/5 border border-white/5 rounded-2xl hover:bg-rose-600 transition group">
-                    <i data-lucide="instagram" class="w-6 h-6 mx-auto mb-2 group-hover:text-white"></i>
-                    <span class="mono text-[9px] uppercase font-bold tracking-widest">Instagram</span>
-                </a>
-                <a href="https://facebook.com/ZeherHassanOfficial" target="_blank" class="p-6 bg-white/5 border border-white/5 rounded-2xl hover:bg-rose-600 transition group">
-                    <i data-lucide="facebook" class="w-6 h-6 mx-auto mb-2 group-hover:text-white"></i>
-                    <span class="mono text-[9px] uppercase font-bold tracking-widest">Facebook</span>
-                </a>
-                <a href="https://x.com/zeherhassan" target="_blank" class="p-6 bg-white/5 border border-white/5 rounded-2xl hover:bg-rose-600 transition group">
-                    <i data-lucide="twitter" class="w-6 h-6 mx-auto mb-2 group-hover:text-white"></i>
-                    <span class="mono text-[9px] uppercase font-bold tracking-widest">X / Twitter</span>
-                </a>
-            </div>
-            
-            <p class="mt-40 mono text-[9px] opacity-20 uppercase tracking-[1.5em]">ZEHERHASSAN.COM © 2026</p>
-        </div>
-    </section>
+    </div>
 
     <script>
         lucide.createIcons();
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
+        
+        // Matrix Effect
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const letters = "01010101SECUREZEHERHASSAN789@#$%^&*";
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+        function draw() {
+            ctx.fillStyle = "rgba(15, 23, 42, 0.1)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#e11d48"; 
+            ctx.font = fontSize + "px JetBrains Mono";
+            for (let i = 0; i < drops.length; i++) {
+                const text = letters[Math.floor(Math.random() * letters.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
             }
         }
-        window.addEventListener("scroll", reveal);
-        reveal();
+        setInterval(draw, 40);
     </script>
 </body>
 </html>

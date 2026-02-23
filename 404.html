@@ -2,74 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 // ACCESS_DENIED</title>
+    <title>404 | Access Denied</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
     <style>
-        body { 
-            background: #000; 
-            color: #ff003c; 
-            font-family: 'JetBrains Mono', monospace;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-        .glitch {
-            font-size: 5vw;
-            font-weight: bold;
-            text-transform: uppercase;
-            position: relative;
-            text-shadow: 0.05em 0 0 rgba(255, 0, 60, 0.75),
-                        -0.025em -0.05em 0 rgba(0, 255, 136, 0.75),
-                        0.025em 0.05em 0 rgba(0, 136, 255, 0.75);
-            animation: glitch 500ms infinite;
-        }
+        body { background-color: #0a0a0a; color: #ff3131; font-family: 'Courier New', Courier, monospace; }
+        .glitch { animation: glitch 1s linear infinite; }
         @keyframes glitch {
-            0% { text-shadow: 0.05em 0 0 rgba(255, 0, 60, 0.75); }
-            15% { text-shadow: -0.05em -0.025em 0 rgba(0, 255, 136, 0.75); }
-            49% { text-shadow: 0.05em 0.025em 0 rgba(0, 136, 255, 0.75); }
-            100% { text-shadow: -0.025em 0 0 rgba(255, 0, 60, 0.75); }
-        }
-        .scanline {
-            width: 100%;
-            height: 2px;
-            background: rgba(255, 0, 60, 0.1);
-            position: absolute;
-            animation: scan 3s linear infinite;
-        }
-        @keyframes scan {
-            0% { top: 0; }
-            100% { top: 100%; }
+            2%, 64% { transform: translate(2px, 0) skew(0deg); }
+            4%, 60% { transform: translate(-2px, 0) skew(0deg); }
+            62% { transform: translate(0, 0) skew(5deg); }
         }
     </style>
 </head>
-<body>
-    <div class="scanline"></div>
-    
-    <div class="text-center p-10 border-2 border-rose-600 bg-rose-600/5 relative">
-        <div class="mb-6 flex justify-center">
-            <i data-lucide="shield-alert" class="w-16 h-16 animate-pulse"></i>
-        </div>
-        <h1 class="glitch mb-4">404_NOT_FOUND</h1>
-        <p class="text-white opacity-60 mb-8 uppercase tracking-widest text-xs">
-            Unauthorized Path: The requested resource is restricted or does not exist.
-        </p>
-        <div class="space-y-4">
-            <div class="text-[10px] opacity-30 uppercase">Trace_ID: <span id="trace"></span></div>
-            <a href="/" class="inline-block px-8 py-3 border border-rose-600 text-rose-600 hover:bg-rose-600 hover:text-white transition-all uppercase font-bold text-xs">
-                Return to Secure Home
-            </a>
-        </div>
+<body class="h-screen flex flex-col justify-center items-center text-center p-6">
+    <h1 class="text-9xl font-bold glitch">404</h1>
+    <p class="text-2xl mt-4 mb-8 text-white uppercase tracking-tighter">Target Not Found / Unauthorized Access</p>
+    <div class="glass border border-red-500/30 p-4 mb-8 bg-red-900/10 rounded">
+        <p class="text-sm">[!] Warning: Your IP has been logged for research purposes.</p>
+        <p class="text-sm">[!] Location: zeherhassan.com/root/null</p>
     </div>
-
-    <script>
-        lucide.createIcons();
-        // Generate a fake Trace ID
-        document.getElementById('trace').innerText = Math.random().toString(16).toUpperCase().substring(2, 12);
-    </script>
+    <a href="/" class="border border-white text-white px-6 py-2 hover:bg-white hover:text-black transition uppercase text-xs font-bold tracking-widest">
+        Return to Safe Zone
+    </a>
 </body>
 </html>

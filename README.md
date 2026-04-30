@@ -20,8 +20,8 @@ Official landing page for **Zeher Hassan**, Security Researcher & Bug Hunter.
 
 ## 📬 Contact
 - **Website:** [zeherhassan.com](https://zeherhassan.com)
-- **Email:** contact@zeherhassan.com
-- **Socials:** [@zeherhassanofficial](https://instagram.com/zeherhassanofficial)
+- **Email:** admin@zeherhassan.com
+- **Instagram:** @zeherhassanofficial
 
 ---
 *Created by Zeher Hassan. All rights reserved.*

@@ -5,94 +5,396 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zeher Hassan | Security Researcher</title>
     <link rel="icon" type="image/png" href="favicon.png">
-<link rel="apple-touch-icon" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lora:wght@400;600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #0a0a0a; color: #ffffff; scroll-behavior: smooth; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); }
-        .text-red-custom { color: #ff3131; }
-        .bg-red-custom { background-color: #ff3131; }
-        .hero-gradient { background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #0a0a0a 100%); }
+        * { font-family: 'Inter', sans-serif; }
+        body { background-color: #0f0f0f; color: #e5e5e5; scroll-behavior: smooth; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; }
+        .subtitle { font-family: 'Lora', serif; }
+        .accent { color: #ff3d3d; }
+        .bg-accent { background-color: #ff3d3d; }
+        .accent-dark { color: #e63946; }
+        .bg-accent-dark { background-color: #e63946; }
+        .magazine-header { 
+            border-bottom: 2px solid #ff3d3d; 
+            position: relative; 
+            padding: 1.5rem 0; 
+            background-color: #1a1a1a;
+        }
+        .magazine-divider { 
+            height: 6px; 
+            background: linear-gradient(90deg, #ff3d3d 0%, #2d2d2d 50%, #ff3d3d 100%); 
+            margin: 3rem 0; 
+        }
+        .article-card { 
+            background: #1a1a1a; 
+            border: 1px solid #2d2d2d; 
+            transition: all 0.3s ease;
+        }
+        .article-card:hover { 
+            border-color: #ff3d3d;
+            box-shadow: 0 0 20px rgba(255, 61, 61, 0.2); 
+            transform: translateY(-4px); 
+        }
+        .feature-image { 
+            height: 350px; 
+            overflow: hidden; 
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); 
+        }
+        .feature-image img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+        }
+        .tag { 
+            display: inline-block; 
+            background: rgba(255, 61, 61, 0.2); 
+            color: #ff3d3d;
+            padding: 0.4rem 0.85rem; 
+            font-size: 0.7rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1.5px; 
+            margin-bottom: 0.75rem; 
+            border: 1px solid rgba(255, 61, 61, 0.3);
+            border-radius: 2px;
+        }
+        .tag-featured { 
+            background: #ff3d3d; 
+            color: #0f0f0f;
+            border: 1px solid #ff3d3d;
+        }
+        .headline-large { 
+            font-size: 3.5rem; 
+            line-height: 1; 
+            font-weight: 900; 
+            margin-bottom: 1.5rem; 
+            letter-spacing: -1px;
+        }
+        .headline-med { 
+            font-size: 1.75rem; 
+            line-height: 1.2; 
+            font-weight: 900;
+            margin-bottom: 0.75rem;
+        }
+        .byline { 
+            font-size: 0.85rem; 
+            color: #888; 
+            margin-bottom: 1rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+        }
+        .text-muted { color: #888; }
+        .card-gradient-1 { background: linear-gradient(135deg, #1a3a52 0%, #0f2136 100%); }
+        .card-gradient-2 { background: linear-gradient(135deg, #2d3a1a 0%, #1a2210 100%); }
+        .card-gradient-3 { background: linear-gradient(135deg, #3a1a2d 0%, #221010 100%); }
+        .card-gradient-4 { background: linear-gradient(135deg, #3a2a1a 0%, #2d1a0f 100%); }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 61, 61, 0.1);
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        @media (max-width: 768px) {
+            .hero-grid { grid-template-columns: 1fr; }
+            .headline-large { font-size: 2.5rem; }
+        }
     </style>
 </head>
-<body class="font-sans antialiased">
+<body>
 
-    <header class="fixed top-0 w-full z-50 glass py-4 px-6 md:px-12 flex justify-between items-center">
-        <div class="text-2xl font-black tracking-tighter">
-            <span class="text-white">Z</span><span class="text-red-custom">H</span>
+    <!-- Magazine Header -->
+    <header class="magazine-header sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="flex justify-between items-center mb-4">
+                <div class="flex items-center gap-3">
+                    <div class="text-4xl font-black">
+                        <span class="accent">Z</span><span class="text-white">EHER</span>
+                    </div>
+                    <div class="text-xs text-gray-400 border-l border-gray-700 pl-3 py-1 uppercase tracking-widest">Security<br/>Intelligence</div>
+                </div>
+                
+                <nav class="hidden md:flex space-x-8 font-medium text-sm uppercase tracking-widest">
+                    <a href="#featured" class="hover:accent transition">Featured</a>
+                    <a href="#expertise" class="hover:accent transition">Expertise</a>
+                    <a href="#research" class="hover:accent transition">Research</a>
+                    <a href="#contact" class="hover:accent transition">Contact</a>
+                </nav>
+
+                <button class="md:hidden accent text-xl"><i class="fa-solid fa-bars"></i></button>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-3">
+                <p class="text-xs text-gray-500 uppercase tracking-widest">Penetration Testing • Vulnerability Research • Digital Forensics</p>
+            </div>
         </div>
-        
-        <nav class="hidden md:flex space-x-8 font-medium text-sm uppercase tracking-widest">
-            <a href="#home" class="hover:text-red-custom transition">Home</a>
-            <a href="#about" class="hover:text-red-custom transition">About</a>
-            <a href="#contact" class="hover:text-red-custom transition">Contact Us</a>
-        </nav>
-
-        <button class="md:hidden text-white"><i class="fa-solid fa-bars-staggered text-xl"></i></button>
     </header>
 
-    <section id="home" class="min-h-screen flex flex-col justify-center items-center text-center px-6 hero-gradient">
-        <h1 class="text-5xl md:text-8xl font-bold mb-6 tracking-tight">
-            ZEHER <span class="text-red-custom">HASSAN</span>
-        </h1>
-        <p class="text-gray-400 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed">
-            Specializing in elite-level security research, uncovering critical vulnerabilities, and securing digital infrastructures before they are exploited.
-        </p>
-        <div class="flex flex-col md:flex-row gap-4">
-            <a href="#contact" class="bg-red-custom text-white px-10 py-4 rounded-full font-bold hover:bg-red-700 transition-all transform hover:scale-105 shadow-lg shadow-red-900/20">
-                GET A SECURITY AUDIT
-            </a>
-            <a href="#services" class="border border-white/20 px-10 py-4 rounded-full font-bold hover:bg-white hover:text-black transition-all">
-                VIEW SPECIALTIES
-            </a>
+    <!-- Hero Featured Section -->
+    <section id="featured" class="bg-gradient-to-b from-#0f0f0f to-#1a1a1a py-20 px-6 md:px-12 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="hero-grid">
+                <!-- Content -->
+                <div>
+                    <span class="tag tag-featured">FEATURED INVESTIGATION</span>
+                    <h1 class="headline-large">Elite Security <span class="accent">Intelligence</span></h1>
+                    <p class="subtitle text-lg text-gray-300 mb-8 leading-relaxed">
+                        Exposing critical vulnerabilities before attackers find them. Industry-leading penetration testing and security research methodology.
+                    </p>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        With over a decade of expertise, we specialize in securing digital infrastructures against elite-level threats using advanced reconnaissance and exploitation techniques.
+                    </p>
+                    <div class="flex gap-4 flex-wrap">
+                        <a href="#contact" class="bg-accent text-black px-8 py-3 font-bold hover:bg-red-500 transition uppercase text-sm tracking-wide">
+                            Schedule Audit
+                        </a>
+                        <a href="#expertise" class="border-2 border-accent text-accent px-8 py-3 font-bold hover:bg-accent hover:text-black transition uppercase text-sm tracking-wide">
+                            Our Services
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Featured Image -->
+                <div class="feature-image rounded-lg overflow-hidden border border-gray-700">
+                    <div class="w-full h-full card-gradient-1 flex items-center justify-center">
+                        <i class="fa-solid fa-shield-halved accent text-8xl opacity-20"></i>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="services" class="py-24 px-6 md:px-24">
-        <h2 class="text-3xl font-bold mb-16 text-center italic tracking-widest uppercase">Expertise</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            
-            <div class="glass p-8 rounded-2xl hover:border-red-500/50 transition group">
-                <i class="fa-solid fa-mobile-screen-button text-red-custom text-3xl mb-6"></i>
-                <h3 class="text-xl font-bold mb-3 uppercase tracking-wide">App Testing</h3>
-                <p class="text-gray-400 text-sm leading-relaxed">Deep-dive analysis of iOS & Android applications to eliminate crashes and logic flaws.</p>
+    <div class="magazine-divider"></div>
+
+    <!-- Featured Articles Row -->
+    <section class="bg-#0f0f0f py-16 px-6 md:px-12 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-12">
+                <h2 class="text-4xl font-black mb-2">Latest Research</h2>
+                <p class="text-gray-500 uppercase text-sm tracking-widest">Industry insights and threat analysis</p>
             </div>
 
-            <div class="glass p-8 rounded-2xl hover:border-red-500/50 transition">
-                <i class="fa-solid fa-shield-halved text-red-custom text-3xl mb-6"></i>
-                <h3 class="text-xl font-bold mb-3 uppercase tracking-wide">Website Security</h3>
-                <p class="text-gray-400 text-sm leading-relaxed">Penetration testing aimed at shielding web assets from SQLi, XSS, and data theft.</p>
-            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Article 1 -->
+                <article class="article-card overflow-hidden rounded-lg">
+                    <div class="feature-image card-gradient-1 flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass text-white text-5xl opacity-20"></i>
+                    </div>
+                    <div class="p-6">
+                        <span class="tag">INVESTIGATION</span>
+                        <h3 class="headline-med">Zero-Day Research Methodology</h3>
+                        <p class="text-gray-400 leading-relaxed text-sm mb-4">Advanced techniques for discovering undisclosed vulnerabilities in modern applications and infrastructure.</p>
+                        <a href="#" class="text-accent text-sm font-bold uppercase tracking-wider hover:opacity-75 transition">Read more →</a>
+                    </div>
+                </article>
 
-            <div class="glass p-8 rounded-2xl hover:border-red-500/50 transition">
-                <i class="fa-solid fa-bug text-red-custom text-3xl mb-6"></i>
-                <h3 class="text-xl font-bold mb-3 uppercase tracking-wide">Bug Hunting</h3>
-                <p class="text-gray-400 text-sm leading-relaxed">Methodical vulnerability research identifying edge-case threats that automated scanners miss.</p>
-            </div>
+                <!-- Article 2 -->
+                <article class="article-card overflow-hidden rounded-lg">
+                    <div class="feature-image card-gradient-2 flex items-center justify-center">
+                        <i class="fa-solid fa-code text-white text-5xl opacity-20"></i>
+                    </div>
+                    <div class="p-6">
+                        <span class="tag">ANALYSIS</span>
+                        <h3 class="headline-med">Web Application Threats</h3>
+                        <p class="text-gray-400 leading-relaxed text-sm mb-4">Comprehensive breakdown of modern web vulnerabilities including API security and authentication bypass techniques.</p>
+                        <a href="#" class="text-accent text-sm font-bold uppercase tracking-wider hover:opacity-75 transition">Read more →</a>
+                    </div>
+                </article>
 
-            <div class="glass p-8 rounded-2xl hover:border-red-500/50 transition">
-                <i class="fa-solid fa-network-wired text-red-custom text-3xl mb-6"></i>
-                <h3 class="text-xl font-bold mb-3 uppercase tracking-wide">Network Loops</h3>
-                <p class="text-gray-400 text-sm leading-relaxed">Advanced diagnostics to identify and resolve complex routing loops and bottlenecks.</p>
+                <!-- Article 3 -->
+                <article class="article-card overflow-hidden rounded-lg">
+                    <div class="feature-image card-gradient-3 flex items-center justify-center">
+                        <i class="fa-solid fa-network-wired text-white text-5xl opacity-20"></i>
+                    </div>
+                    <div class="p-6">
+                        <span class="tag">RESEARCH</span>
+                        <h3 class="headline-med">Network Infrastructure Risks</h3>
+                        <p class="text-gray-400 leading-relaxed text-sm mb-4">Deep analysis of routing protocols, network segmentation, and infrastructure vulnerabilities in enterprise environments.</p>
+                        <a href="#" class="text-accent text-sm font-bold uppercase tracking-wider hover:opacity-75 transition">Read more →</a>
+                    </div>
+                </article>
             </div>
-
         </div>
     </section>
 
-    <footer id="contact" class="py-20 border-t border-white/5 bg-black/50">
-        <div class="max-w-4xl mx-auto text-center px-6">
-            <h2 class="text-4xl font-bold mb-8 italic">Ready to secure your business?</h2>
-            <p class="text-gray-400 mb-12">Connect with me on social media or reach out for a consultation.</p>
-            
-            <div class="flex justify-center gap-8 mb-16">
-                <a href="https://instagram.com/zeherhassanofficial" class="text-2xl hover:text-red-custom transition"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://facebook.com/zeherhassanofficial" class="text-2xl hover:text-red-custom transition"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="https://youtube.com/@zeherhassan" class="text-2xl hover:text-red-custom transition"><i class="fa-brands fa-youtube"></i></a>
-                <a href="https://x.com/zeherhassan" class="text-2xl hover:text-red-custom transition"><i class="fa-brands fa-x-twitter"></i></a>
+    <div class="magazine-divider"></div>
+
+    <!-- Expertise Section - Magazine Cards -->
+    <section id="expertise" class="bg-#0f0f0f py-16 px-6 md:px-12 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-12">
+                <h2 class="text-4xl font-black mb-2">Core Competencies</h2>
+                <p class="text-gray-500 uppercase text-sm tracking-widest">Specialized security expertise across all platforms</p>
             </div>
 
-            <p class="text-xs text-gray-600 tracking-widest uppercase">&copy; 2026 ZEHER HASSAN. ALL RIGHTS RESERVED.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Card 1 -->
+                <article class="article-card overflow-hidden rounded-lg">
+                    <div class="feature-image card-gradient-1 flex items-center justify-center">
+                        <i class="fa-solid fa-mobile-screen-button text-white text-5xl opacity-25"></i>
+                    </div>
+                    <div class="p-6">
+                        <span class="tag">MOBILE</span>
+                        <h3 class="text-xl font-black mb-3">App Testing</h3>
+                        <ul class="text-gray-400 text-sm space-y-2">
+                            <li><span class="accent">•</span> iOS Security Audits</li>
+                            <li><span class="accent">•</span> Android Penetration</li>
+                            <li><span class="accent">•</span> API Testing</li>
+                            <li><span class="accent">•</span> Reverse Engineering</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="article-card overflow-hidden rounded-lg">
+                    <div class="feature-image card-gradient-2 flex items-center justify-center">
+                        <i class="fa-solid fa-shield-halved text-white text-5xl opacity-25"></i>
+                    </div>
+                    <div class="p-6">
+                        <span class="tag">WEB</span>
+                        <h3 class="text-xl font-black mb-3">Website Security</h3>
+                        <ul class="text-gray-400 text-sm space-y-2">
+                            <li><span class="accent">•</span> SQL Injection Testing</li>
+                            <li><span class="accent">•</span> XSS Prevention</li>
+                            <li><span class="accent">•</span> CSRF Protection</li>
+                            <li><span class="accent">•</span> Authentication Bypass</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="article-card overflow-hidden rounded-lg">
+                    <div class="feature-image card-gradient-3 flex items-center justify-center">
+                        <i class="fa-solid fa-bug text-white text-5xl opacity-25"></i>
+                    </div>
+                    <div class="p-6">
+                        <span class="tag">RESEARCH</span>
+                        <h3 class="text-xl font-black mb-3">Bug Hunting</h3>
+                        <ul class="text-gray-400 text-sm space-y-2">
+                            <li><span class="accent">•</span> Zero-Day Discovery</li>
+                            <li><span class="accent">•</span> Exploit Development</li>
+                            <li><span class="accent">•</span> Edge Case Analysis</li>
+                            <li><span class="accent">•</span> CVE Research</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Card 4 -->
+                <article class="article-card overflow-hidden rounded-lg">
+                    <div class="feature-image card-gradient-4 flex items-center justify-center">
+                        <i class="fa-solid fa-network-wired text-white text-5xl opacity-25"></i>
+                    </div>
+                    <div class="p-6">
+                        <span class="tag">INFRASTRUCTURE</span>
+                        <h3 class="text-xl font-black mb-3">Network Security</h3>
+                        <ul class="text-gray-400 text-sm space-y-2">
+                            <li><span class="accent">•</span> Routing Audits</li>
+                            <li><span class="accent">•</span> Firewall Bypass</li>
+                            <li><span class="accent">•</span> DNS Exploitation</li>
+                            <li><span class="accent">•</span> VLAN Hopping</li>
+                        </ul>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="magazine-divider"></div>
+
+    <!-- Research & Insights Column -->
+    <section id="research" class="bg-#0f0f0f py-16 px-6 md:px-12 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- About -->
+                <div class="glass-effect p-6 rounded-lg">
+                    <h3 class="text-sm uppercase tracking-widest font-black accent mb-4">About</h3>
+                    <p class="subtitle text-gray-300 leading-relaxed text-sm">
+                        Security researcher specializing in elite-level threat detection and vulnerability disclosure. Trusted by Fortune 500 companies and government agencies.
+                    </p>
+                </div>
+
+                <!-- Why Choose -->
+                <div class="glass-effect p-6 rounded-lg">
+                    <h3 class="text-sm uppercase tracking-widest font-black accent mb-4">Why Choose</h3>
+                    <ul class="space-y-3 text-sm text-gray-300">
+                        <li><i class="fa-solid fa-check accent mr-2"></i>Certified Ethical Hacker</li>
+                        <li><i class="fa-solid fa-check accent mr-2"></i>Real-World Threat Intel</li>
+                        <li><i class="fa-solid fa-check accent mr-2"></i>Detailed Reporting</li>
+                        <li><i class="fa-solid fa-check accent mr-2"></i>24/7 Support</li>
+                    </ul>
+                </div>
+
+                <!-- Industries -->
+                <div class="glass-effect p-6 rounded-lg">
+                    <h3 class="text-sm uppercase tracking-widest font-black accent mb-4">Industries</h3>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><span class="accent">→</span> Financial Services</li>
+                        <li><span class="accent">→</span> Healthcare & Biotech</li>
+                        <li><span class="accent">→</span> Government & Defense</li>
+                        <li><span class="accent">→</span> E-commerce & SaaS</li>
+                        <li><span class="accent">→</span> Enterprise Solutions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="magazine-divider"></div>
+
+    <!-- Statistics/Numbers Section -->
+    <section class="bg-#1a1a1a py-16 px-6 md:px-12 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <p class="text-4xl font-black accent mb-2">500+</p>
+                    <p class="text-gray-400 uppercase text-xs tracking-widest">Audits Completed</p>
+                </div>
+                <div>
+                    <p class="text-4xl font-black accent mb-2">1000+</p>
+                    <p class="text-gray-400 uppercase text-xs tracking-widest">Vulnerabilities Found</p>
+                </div>
+                <div>
+                    <p class="text-4xl font-black accent mb-2">10+</p>
+                    <p class="text-gray-400 uppercase text-xs tracking-widest">Years Experience</p>
+                </div>
+                <div>
+                    <p class="text-4xl font-black accent mb-2">99%</p>
+                    <p class="text-gray-400 uppercase text-xs tracking-widest">Client Satisfaction</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact CTA -->
+    <footer id="contact" class="bg-accent py-20 px-6 md:px-12">
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-black uppercase text-xs tracking-widest mb-4">Get Started Today</p>
+            <h2 class="text-5xl font-black text-black mb-6">Ready to Secure Your Business?</h2>
+            <p class="subtitle text-lg text-black/80 mb-12 max-w-2xl mx-auto">
+                Connect with us for a personalized security assessment and threat analysis
+            </p>
+            
+            <div class="flex justify-center gap-8 mb-12">
+                <a href="https://instagram.com/zeherhassanofficial" class="text-black text-xl hover:opacity-70 transition"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://facebook.com/zeherhassanofficial" class="text-black text-xl hover:opacity-70 transition"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://youtube.com/@zeherhassan" class="text-black text-xl hover:opacity-70 transition"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://x.com/zeherhassan" class="text-black text-xl hover:opacity-70 transition"><i class="fa-brands fa-x-twitter"></i></a>
+            </div>
+
+            <button class="bg-black text-white px-8 py-4 font-black uppercase tracking-wider hover:bg-gray-900 transition rounded-lg text-sm mb-12">
+                Schedule Your Audit
+            </button>
+
+            <p class="text-xs text-black/60 tracking-widest uppercase">&copy; 2026 Zeher Hassan Security Research. All rights reserved.</p>
         </div>
     </footer>
 

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Zeher Hassan</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #0a0a0a; color: #ffffff; scroll-behavior: smooth; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .text-red-custom { color: #ff3131; }
+        
+        /* Form Inputs */
+        .input-dark { background-color: #111111; border: 1px solid rgba(255, 255, 255, 0.1); color: #ffffff; transition: all 0.3s ease; }
+        .input-dark:focus { border-color: #ff3131; outline: none; box-shadow: 0 0 10px rgba(255, 49, 49, 0.1); }
+        
+        /* Fullscreen Menu Overlay */
+        #mobile-menu { transition: opacity 0.3s ease, visibility 0.3s ease; }
+        .menu-hidden { opacity: 0; visibility: hidden; }
+        .menu-visible { opacity: 1; visibility: visible; }
+    </style>
+</head>
+<body class="font-sans antialiased">
+
+    <!-- Fixed Header: 3-Column Layout -->
+    <header class="fixed top-0 w-full z-50 glass py-5 px-6 md:px-12 grid grid-cols-3 items-center">
+        <!-- 1. Left Column: Small ZH Logo -->
+        <a href="/" class="text-2xl font-black tracking-tighter justify-self-start hover:opacity-80 transition">
+            <span class="text-white">Z</span><span class="text-red-custom">H</span>
+        </a>
+        
+        <!-- 2. Center Column: Main Brand Name Centered -->
+        <a href="/" class="text-xl md:text-2xl font-black tracking-widest uppercase text-white justify-self-center text-center whitespace-nowrap">
+            Zeher <span class="text-red-custom">Hassan</span>
+        </a>
+        
+        <!-- 3. Right Column: Universal Menu Button -->
+        <button id="menu-btn" class="text-white hover:text-red-custom transition duration-300 justify-self-end">
+            <i class="fa-solid fa-bars-staggered text-xl"></i>
+        </button>
+    </header>
+
+    <!-- Fullscreen Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-black/95 z-40 flex flex-col justify-center items-center menu-hidden">
+        <button id="close-menu-btn" class="absolute top-6 right-6 md:right-12 text-white hover:text-red-custom text-3xl">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <nav class="flex flex-col space-y-8 text-center text-2xl font-bold tracking-widest uppercase">
+            <a href="/" class="hover:text-red-custom transition">Latest Dispatches</a>
+            <a href="/about.html" class="hover:text-red-custom transition">About the Desk</a>
+            <a href="/contact.html" class="text-red-custom transition">Contact</a>
+            <a href="/privacy-policy.html" class="text-lg text-gray-500 hover:text-white transition mt-8">Privacy Policy</a>
+        </nav>
+    </div>
+
+    <!-- Main Content Area -->
+    <main class="pt-36 pb-24 px-6 md:px-12 max-w-5xl mx-auto min-h-screen">
+        
+        <!-- Header Section -->
+        <div class="mb-12 border-b border-white/5 pb-8">
+            <h1 class="text-4xl md:text-5xl font-black uppercase tracking-tight mb-4">Secure <span class="text-red-custom">Comms</span></h1>
+            <p class="text-gray-400 font-mono text-sm tracking-widest uppercase">
+                Establish direct contact with the desk.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
+            
+            <!-- Left Column: Contact Info & Socials -->
+            <div class="flex flex-col justify-start">
+                <p class="text-gray-400 text-lg leading-relaxed mb-8">
+                    Whether you have an inquiry regarding our infrastructure research, require consultation on network architecture, or want to submit an intelligence tip, you can reach out via the secure channels below.
+                </p>
+
+                <!-- Direct Email -->
+                <div class="mb-10">
+                    <h3 class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">Direct Transmission</h3>
+                    <a href="mailto:admin@zeherhassan.com" class="text-xl md:text-2xl font-mono text-white hover:text-red-custom transition flex items-center gap-4 group">
+                        <i class="fa-regular fa-envelope text-red-custom group-hover:scale-110 transition"></i> admin@zeherhassan.com
+                    </a>
+                </div>
+
+                <!-- Social Links -->
+                <div>
+                    <h3 class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-4">Digital Footprint</h3>
+                    <div class="flex flex-col space-y-4">
+                        <a href="https://youtube.com/zeherhassan" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 text-gray-400 hover:text-white transition group">
+                            <div class="w-10 h-10 rounded bg-[#111] flex items-center justify-center group-hover:bg-[#ff0000]/20 group-hover:text-[#ff0000] transition">
+                                <i class="fa-brands fa-youtube text-lg"></i>
+                            </div>
+                            <span class="font-mono text-sm">youtube.com/zeherhassan</span>
+                        </a>
+                        <a href="https://x.com/zeherhassan" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 text-gray-400 hover:text-white transition group">
+                            <div class="w-10 h-10 rounded bg-[#111] flex items-center justify-center group-hover:bg-white/20 group-hover:text-white transition">
+                                <i class="fa-brands fa-x-twitter text-lg"></i>
+                            </div>
+                            <span class="font-mono text-sm">x.com/zeherhassan</span>
+                        </a>
+                        <a href="https://facebook.com/zeherhassanofficial" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 text-gray-400 hover:text-white transition group">
+                            <div class="w-10 h-10 rounded bg-[#111] flex items-center justify-center group-hover:bg-[#1877f2]/20 group-hover:text-[#1877f2] transition">
+                                <i class="fa-brands fa-facebook-f text-lg"></i>
+                            </div>
+                            <span class="font-mono text-sm">facebook.com/zeherhassanofficial</span>
+                        </a>
+                        <a href="https://instagram.com/zeherhassanofficial" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 text-gray-400 hover:text-white transition group">
+                            <div class="w-10 h-10 rounded bg-[#111] flex items-center justify-center group-hover:bg-[#e1306c]/20 group-hover:text-[#e1306c] transition">
+                                <i class="fa-brands fa-instagram text-lg"></i>
+                            </div>
+                            <span class="font-mono text-sm">instagram.com/zeherhassanofficial</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Contact Form -->
+            <div class="bg-[#050505] border border-white/5 rounded-lg p-6 md:p-8">
+                <form action="mailto:admin@zeherhassan.com" method="POST" enctype="text/plain" class="flex flex-col space-y-6">
+                    <div>
+                        <label for="name" class="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Identification</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required class="w-full input-dark rounded px-4 py-3 text-sm">
+                    </div>
+                    
+                    <div>
+                        <label for="email" class="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Return Address</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required class="w-full input-dark rounded px-4 py-3 text-sm">
+                    </div>
+
+                    <div>
+                        <label for="subject" class="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Subject Header</label>
+                        <input type="text" id="subject" name="subject" placeholder="Purpose of communication" required class="w-full input-dark rounded px-4 py-3 text-sm">
+                    </div>
+                    
+                    <div>
+                        <label for="message" class="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Message Payload</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Enter your message here..." required class="w-full input-dark rounded px-4 py-3 text-sm resize-none"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-red-custom hover:bg-red-600 text-white font-bold uppercase tracking-widest text-sm py-4 rounded transition duration-300 flex justify-center items-center gap-2">
+                        Transmit Data <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/5 bg-black">
+        <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-sm font-bold tracking-widest uppercase text-gray-400">
+                &copy; 2026 ZEHER HASSAN. ALL RIGHTS RESERVED.
+            </div>
+            <div class="flex gap-6 text-sm font-medium text-gray-500 uppercase tracking-widest">
+                <a href="/about.html" class="hover:text-white transition">About</a>
+                <a href="/privacy-policy.html" class="hover:text-white transition">Privacy Policy</a>
+                <a href="/contact.html" class="text-white transition">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripting for Navigation Overlay -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const closeBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('menu-hidden');
+            mobileMenu.classList.toggle('menu-visible');
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+        closeBtn.addEventListener('click', toggleMenu);
+    </script>
+</body>
+</html>

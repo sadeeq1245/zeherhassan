@@ -3,98 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zeher Hassan | Security Researcher</title>
+    <title>Zeher Hassan | Geo-Politics & Deep-Tech</title>
     <link rel="icon" type="image/png" href="favicon.png">
-<link rel="apple-touch-icon" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        body { background-color: #0a0a0a; color: #ffffff; scroll-behavior: smooth; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); }
-        .text-red-custom { color: #ff3131; }
-        .bg-red-custom { background-color: #ff3131; }
-        .hero-gradient { background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #0a0a0a 100%); }
+        body { background-color: #050505; color: #f3f4f6; scroll-behavior: smooth; }
+        .glass-nav { background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .text-accent { color: #e63946; }
+        .hover-card:hover { border-color: rgba(230, 57, 70, 0.5); background-color: #0f0f0f; }
+        
+        /* Fullscreen Menu Overlay */
+        #mobile-menu { transition: opacity 0.3s ease, visibility 0.3s ease; }
+        .menu-hidden { opacity: 0; visibility: hidden; }
+        .menu-visible { opacity: 1; visibility: visible; }
     </style>
 </head>
 <body class="font-sans antialiased">
 
-    <header class="fixed top-0 w-full z-50 glass py-4 px-6 md:px-12 flex justify-between items-center">
-        <div class="text-2xl font-black tracking-tighter">
-            <span class="text-white">Z</span><span class="text-red-custom">H</span>
-        </div>
+    <!-- Top Navigation -->
+    <header class="fixed top-0 w-full z-50 glass-nav py-5 px-6 md:px-12 flex justify-between items-center">
+        <!-- Left: Logo -->
+        <a href="/" class="text-2xl font-black tracking-widest uppercase text-white">
+            Zeher<span class="text-accent">Hassan</span>
+        </a>
         
-        <nav class="hidden md:flex space-x-8 font-medium text-sm uppercase tracking-widest">
-            <a href="#home" class="hover:text-red-custom transition">Home</a>
-            <a href="#about" class="hover:text-red-custom transition">About</a>
-            <a href="#contact" class="hover:text-red-custom transition">Contact Us</a>
-        </nav>
-
-        <button class="md:hidden text-white"><i class="fa-solid fa-bars-staggered text-xl"></i></button>
+        <!-- Right: Universal Menu Button (PC & Mobile) -->
+        <button id="menu-btn" class="text-white hover:text-accent transition duration-300">
+            <i class="fa-solid fa-bars-staggered text-2xl"></i>
+        </button>
     </header>
 
-    <section id="home" class="min-h-screen flex flex-col justify-center items-center text-center px-6 hero-gradient">
-        <h1 class="text-5xl md:text-8xl font-bold mb-6 tracking-tight">
-            ZEHER <span class="text-red-custom">HASSAN</span>
-        </h1>
-        <p class="text-gray-400 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed">
-            Specializing in elite-level security research, uncovering critical vulnerabilities, and securing digital infrastructures before they are exploited.
-        </p>
-        <div class="flex flex-col md:flex-row gap-4">
-            <a href="#contact" class="bg-red-custom text-white px-10 py-4 rounded-full font-bold hover:bg-red-700 transition-all transform hover:scale-105 shadow-lg shadow-red-900/20">
-                GET A SECURITY AUDIT
-            </a>
-            <a href="#services" class="border border-white/20 px-10 py-4 rounded-full font-bold hover:bg-white hover:text-black transition-all">
-                VIEW SPECIALTIES
-            </a>
+    <!-- Fullscreen Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-black/95 z-40 flex flex-col justify-center items-center menu-hidden">
+        <button id="close-menu-btn" class="absolute top-6 right-6 md:right-12 text-white hover:text-accent text-3xl">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <nav class="flex flex-col space-y-8 text-center text-2xl font-bold tracking-widest uppercase">
+            <a href="/" class="hover:text-accent transition">Latest Dispatches</a>
+            <a href="/about.html" class="hover:text-accent transition">About the Desk</a>
+            <a href="/contact.html" class="hover:text-accent transition">Contact</a>
+            <a href="/privacy-policy.html" class="text-lg text-gray-500 hover:text-white transition mt-8">Privacy Policy</a>
+        </nav>
+    </div>
+
+    <!-- Main Content: Magazine Feed -->
+    <main class="pt-32 pb-24 px-6 md:px-12 max-w-5xl mx-auto min-h-screen">
+        <div class="mb-12 border-b border-white/10 pb-6">
+            <h1 class="text-4xl md:text-5xl font-black uppercase tracking-tight mb-2">Intelligence <span class="text-accent">Feed</span></h1>
+            <p class="text-gray-400 font-mono text-sm tracking-widest uppercase">Geo-Politics • Semi-Conductors • Deep-Tech</p>
         </div>
-    </section>
 
-    <section id="services" class="py-24 px-6 md:px-24">
-        <h2 class="text-3xl font-bold mb-16 text-center italic tracking-widest uppercase">Expertise</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            
-            <div class="glass p-8 rounded-2xl hover:border-red-500/50 transition group">
-                <i class="fa-solid fa-mobile-screen-button text-red-custom text-3xl mb-6"></i>
-                <h3 class="text-xl font-bold mb-3 uppercase tracking-wide">App Testing</h3>
-                <p class="text-gray-400 text-sm leading-relaxed">Deep-dive analysis of iOS & Android applications to eliminate crashes and logic flaws.</p>
-            </div>
-
-            <div class="glass p-8 rounded-2xl hover:border-red-500/50 transition">
-                <i class="fa-solid fa-shield-halved text-red-custom text-3xl mb-6"></i>
-                <h3 class="text-xl font-bold mb-3 uppercase tracking-wide">Website Security</h3>
-                <p class="text-gray-400 text-sm leading-relaxed">Penetration testing aimed at shielding web assets from SQLi, XSS, and data theft.</p>
-            </div>
-
-            <div class="glass p-8 rounded-2xl hover:border-red-500/50 transition">
-                <i class="fa-solid fa-bug text-red-custom text-3xl mb-6"></i>
-                <h3 class="text-xl font-bold mb-3 uppercase tracking-wide">Bug Hunting</h3>
-                <p class="text-gray-400 text-sm leading-relaxed">Methodical vulnerability research identifying edge-case threats that automated scanners miss.</p>
-            </div>
-
-            <div class="glass p-8 rounded-2xl hover:border-red-500/50 transition">
-                <i class="fa-solid fa-network-wired text-red-custom text-3xl mb-6"></i>
-                <h3 class="text-xl font-bold mb-3 uppercase tracking-wide">Network Loops</h3>
-                <p class="text-gray-400 text-sm leading-relaxed">Advanced diagnostics to identify and resolve complex routing loops and bottlenecks.</p>
-            </div>
-
+        <!-- Dynamic Articles will be injected here by JavaScript -->
+        <div id="article-feed" class="flex flex-col gap-6">
+            <div class="text-gray-500 italic"><i class="fa-solid fa-satellite-dish animate-pulse mr-2"></i> Fetching data cluster...</div>
         </div>
-    </section>
+    </main>
 
-    <footer id="contact" class="py-20 border-t border-white/5 bg-black/50">
-        <div class="max-w-4xl mx-auto text-center px-6">
-            <h2 class="text-4xl font-bold mb-8 italic">Ready to secure your business?</h2>
-            <p class="text-gray-400 mb-12">Connect with me on social media or reach out for a consultation.</p>
-            
-            <div class="flex justify-center gap-8 mb-16">
-                <a href="https://instagram.com/zeherhassanofficial" class="text-2xl hover:text-red-custom transition"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://facebook.com/zeherhassanofficial" class="text-2xl hover:text-red-custom transition"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="https://youtube.com/@zeherhassan" class="text-2xl hover:text-red-custom transition"><i class="fa-brands fa-youtube"></i></a>
-                <a href="https://x.com/zeherhassan" class="text-2xl hover:text-red-custom transition"><i class="fa-brands fa-x-twitter"></i></a>
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/10 bg-[#020202]">
+        <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-sm font-bold tracking-widest uppercase text-gray-400">
+                &copy; 2026 ZEHER HASSAN. ALL RIGHTS RESERVED.
             </div>
-
-            <p class="text-xs text-gray-600 tracking-widest uppercase">&copy; 2026 ZEHER HASSAN. ALL RIGHTS RESERVED.</p>
+            <div class="flex gap-6 text-sm font-medium text-gray-500 uppercase tracking-widest">
+                <a href="/about.html" class="hover:text-white transition">About</a>
+                <a href="/privacy-policy.html" class="hover:text-white transition">Privacy Policy</a>
+                <a href="/contact.html" class="hover:text-white transition">Contact</a>
+            </div>
         </div>
     </footer>
 
+    <!-- JavaScript to handle Menu & Local JSON Fetch -->
+    <script>
+        // --- 1. Menu Toggle Logic ---
+        const menuBtn = document.getElementById('menu-btn');
+        const closeBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('menu-hidden');
+            mobileMenu.classList.toggle('menu-visible');
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+        closeBtn.addEventListener('click', toggleMenu);
+
+
+        // --- 2. Local JSON Fetch Logic ---
+        async function fetchMagazinePosts() {
+            const feed = document.getElementById('article-feed');
+            
+            try {
+                // Fetch the static posts.json file from your root directory
+                const response = await fetch('/posts.json');
+                
+                if (!response.ok) {
+                    throw new Error('Failed to fetch articles database (posts.json).');
+                }
+                
+                const articles = await response.json();
+                feed.innerHTML = ''; // Clear loading text
+
+                if (articles.length === 0) {
+                    feed.innerHTML = '<div class="p-6 border border-dashed border-white/20 text-gray-500 rounded-lg">No intelligence reports published yet.</div>';
+                    return;
+                }
+
+                // Loop through array and append to feed
+                articles.forEach(post => {
+                    const card = `
+                        <a href="${post.url}" class="hover-card flex flex-col md:flex-row bg-[#0a0a0a] border border-white/5 rounded-lg overflow-hidden transition-all duration-300 group">
+                            <!-- Thumbnail Banner -->
+                            <div class="w-full md:w-1/3 h-48 md:h-auto bg-[#1a1a1a] relative overflow-hidden flex-shrink-0 flex items-center justify-center">
+                                <i class="fa-solid fa-newspaper text-4xl text-gray-800 absolute z-0"></i>
+                                <img src="${post.thumbnail}" alt="${post.title}" onerror="this.style.display='none'" class="object-cover w-full h-full relative z-10 opacity-70 group-hover:opacity-100 group-hover:scale-105 transition duration-500">
+                            </div>
+                            
+                            <!-- Article Data -->
+                            <div class="p-6 md:p-8 flex flex-col justify-center w-full">
+                                <div class="flex items-center justify-between gap-4 mb-2">
+                                    <span class="text-accent text-xs font-bold uppercase tracking-widest flex items-center gap-2">
+                                        <div class="w-1.5 h-1.5 rounded-full bg-accent"></div> Dispatch
+                                    </span>
+                                    <span class="text-gray-500 text-xs font-mono">${post.date}</span>
+                                </div>
+                                <h2 class="text-xl md:text-2xl font-bold text-white mb-3 leading-tight group-hover:text-accent transition">${post.title}</h2>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-4 line-clamp-2">${post.excerpt || ''}</p>
+                                <span class="text-gray-500 text-xs font-bold uppercase tracking-widest flex items-center gap-2 mt-auto">
+                                    Read Full Report <i class="fa-solid fa-arrow-right group-hover:translate-x-2 transition"></i>
+                                </span>
+                            </div>
+                        </a>
+                    `;
+                    feed.innerHTML += card;
+                });
+
+            } catch (error) {
+                console.error(error);
+                feed.innerHTML = `<div class="p-6 border border-red-500/20 bg-red-500/5 text-red-400 rounded-lg">System Error: ${error.message}</div>`;
+            }
+        }
+
+        // Trigger fetch on load
+        fetchMagazinePosts();
+    </script>
 </body>
 </html>

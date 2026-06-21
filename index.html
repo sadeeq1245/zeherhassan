@@ -9,10 +9,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        body { background-color: #050505; color: #f3f4f6; scroll-behavior: smooth; }
-        .glass-nav { background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
-        .text-accent { color: #e63946; }
-        .hover-card:hover { border-color: rgba(230, 57, 70, 0.5); background-color: #0f0f0f; }
+        body { background-color: #0a0a0a; color: #ffffff; scroll-behavior: smooth; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .text-red-custom { color: #ff3131; }
+        .hover-card:hover { border-color: rgba(255, 49, 49, 0.4); background-color: #121212; }
         
         /* Fullscreen Menu Overlay */
         #mobile-menu { transition: opacity 0.3s ease, visibility 0.3s ease; }
@@ -22,47 +22,52 @@
 </head>
 <body class="font-sans antialiased">
 
-    <!-- Top Navigation -->
-    <header class="fixed top-0 w-full z-50 glass-nav py-5 px-6 md:px-12 flex justify-between items-center">
-        <!-- Left: Logo -->
-        <a href="/" class="text-2xl font-black tracking-widest uppercase text-white">
-            Zeher<span class="text-accent">Hassan</span>
+    <!-- Fixed Header: 3-Column Layout -->
+    <header class="fixed top-0 w-full z-50 glass py-5 px-6 md:px-12 grid grid-cols-3 items-center">
+        <!-- 1. Left Column: Small ZH Logo -->
+        <div class="text-2xl font-black tracking-tighter justify-self-start">
+            <span class="text-white">Z</span><span class="text-red-custom">H</span>
+        </div>
+        
+        <!-- 2. Center Column: Main Brand Name Centered -->
+        <a href="/" class="text-xl md:text-2xl font-black tracking-widest uppercase text-white justify-self-center text-center whitespace-nowrap">
+            Zeher <span class="text-red-custom">Hassan</span>
         </a>
         
-        <!-- Right: Universal Menu Button (PC & Mobile) -->
-        <button id="menu-btn" class="text-white hover:text-accent transition duration-300">
-            <i class="fa-solid fa-bars-staggered text-2xl"></i>
+        <!-- 3. Right Column: Universal Menu Button -->
+        <button id="menu-btn" class="text-white hover:text-red-custom transition duration-300 justify-self-end">
+            <i class="fa-solid fa-bars-staggered text-xl"></i>
         </button>
     </header>
 
     <!-- Fullscreen Menu Overlay -->
     <div id="mobile-menu" class="fixed inset-0 bg-black/95 z-40 flex flex-col justify-center items-center menu-hidden">
-        <button id="close-menu-btn" class="absolute top-6 right-6 md:right-12 text-white hover:text-accent text-3xl">
+        <button id="close-menu-btn" class="absolute top-6 right-6 md:right-12 text-white hover:text-red-custom text-3xl">
             <i class="fa-solid fa-xmark"></i>
         </button>
         <nav class="flex flex-col space-y-8 text-center text-2xl font-bold tracking-widest uppercase">
-            <a href="/" class="hover:text-accent transition">Latest Dispatches</a>
-            <a href="/about.html" class="hover:text-accent transition">About the Desk</a>
-            <a href="/contact.html" class="hover:text-accent transition">Contact</a>
+            <a href="/" class="hover:text-red-custom transition">Latest Dispatches</a>
+            <a href="/about.html" class="hover:text-red-custom transition">About the Desk</a>
+            <a href="/contact.html" class="hover:text-red-custom transition">Contact</a>
             <a href="/privacy-policy.html" class="text-lg text-gray-500 hover:text-white transition mt-8">Privacy Policy</a>
         </nav>
     </div>
 
-    <!-- Main Content: Magazine Feed -->
-    <main class="pt-32 pb-24 px-6 md:px-12 max-w-5xl mx-auto min-h-screen">
-        <div class="mb-12 border-b border-white/10 pb-6">
-            <h1 class="text-4xl md:text-5xl font-black uppercase tracking-tight mb-2">Intelligence <span class="text-accent">Feed</span></h1>
+    <!-- Main Content Area: Content scrolls underneath the fixed header -->
+    <main class="pt-36 pb-24 px-6 md:px-12 max-w-5xl mx-auto min-h-screen">
+        <div class="mb-12 border-b border-white/5 pb-6">
+            <h1 class="text-4xl md:text-5xl font-black uppercase tracking-tight mb-2">Intelligence <span class="text-red-custom">Feed</span></h1>
             <p class="text-gray-400 font-mono text-sm tracking-widest uppercase">Geo-Politics • Semi-Conductors • Deep-Tech</p>
         </div>
 
-        <!-- Dynamic Articles will be injected here by JavaScript -->
+        <!-- Dynamic Articles injected from posts.json -->
         <div id="article-feed" class="flex flex-col gap-6">
             <div class="text-gray-500 italic"><i class="fa-solid fa-satellite-dish animate-pulse mr-2"></i> Fetching data cluster...</div>
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="py-12 border-t border-white/10 bg-[#020202]">
+    <footer class="py-12 border-t border-white/5 bg-black">
         <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="text-sm font-bold tracking-widest uppercase text-gray-400">
                 &copy; 2026 ZEHER HASSAN. ALL RIGHTS RESERVED.
@@ -75,9 +80,9 @@
         </div>
     </footer>
 
-    <!-- JavaScript to handle Menu & Local JSON Fetch -->
+    <!-- Scripting for Navigation Overlay & JSON Parsing -->
     <script>
-        // --- 1. Menu Toggle Logic ---
+        // Menu Open/Close Controls
         const menuBtn = document.getElementById('menu-btn');
         const closeBtn = document.getElementById('close-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -90,46 +95,42 @@
         menuBtn.addEventListener('click', toggleMenu);
         closeBtn.addEventListener('click', toggleMenu);
 
-
-        // --- 2. Local JSON Fetch Logic ---
+        // Fetching Database Array from posts.json
         async function fetchMagazinePosts() {
             const feed = document.getElementById('article-feed');
             
             try {
-                // Fetch the static posts.json file from your root directory
                 const response = await fetch('/posts.json');
-                
                 if (!response.ok) {
                     throw new Error('Failed to fetch articles database (posts.json).');
                 }
                 
                 const articles = await response.json();
-                feed.innerHTML = ''; // Clear loading text
+                feed.innerHTML = ''; 
 
                 if (articles.length === 0) {
-                    feed.innerHTML = '<div class="p-6 border border-dashed border-white/20 text-gray-500 rounded-lg">No intelligence reports published yet.</div>';
+                    feed.innerHTML = '<div class="p-6 border border-dashed border-white/10 text-gray-500 rounded-lg">No intelligence reports published yet.</div>';
                     return;
                 }
 
-                // Loop through array and append to feed
                 articles.forEach(post => {
                     const card = `
-                        <a href="${post.url}" class="hover-card flex flex-col md:flex-row bg-[#0a0a0a] border border-white/5 rounded-lg overflow-hidden transition-all duration-300 group">
-                            <!-- Thumbnail Banner -->
-                            <div class="w-full md:w-1/3 h-48 md:h-auto bg-[#1a1a1a] relative overflow-hidden flex-shrink-0 flex items-center justify-center">
-                                <i class="fa-solid fa-newspaper text-4xl text-gray-800 absolute z-0"></i>
-                                <img src="${post.thumbnail}" alt="${post.title}" onerror="this.style.display='none'" class="object-cover w-full h-full relative z-10 opacity-70 group-hover:opacity-100 group-hover:scale-105 transition duration-500">
+                        <a href="${post.url}" class="hover-card flex flex-col md:flex-row bg-[#020202] border border-white/5 rounded-lg overflow-hidden transition-all duration-300 group">
+                            <!-- Image Frame -->
+                            <div class="w-full md:w-1/3 h-48 md:h-auto bg-[#111111] relative overflow-hidden flex-shrink-0 flex items-center justify-center">
+                                <i class="fa-solid fa-newspaper text-3xl text-gray-800 absolute z-0"></i>
+                                <img src="${post.thumbnail}" alt="${post.title}" onerror="this.style.display='none'" class="object-cover w-full h-full relative z-10 opacity-60 group-hover:opacity-100 group-hover:scale-105 transition duration-500">
                             </div>
                             
-                            <!-- Article Data -->
+                            <!-- Metadata and Copy -->
                             <div class="p-6 md:p-8 flex flex-col justify-center w-full">
                                 <div class="flex items-center justify-between gap-4 mb-2">
-                                    <span class="text-accent text-xs font-bold uppercase tracking-widest flex items-center gap-2">
-                                        <div class="w-1.5 h-1.5 rounded-full bg-accent"></div> Dispatch
+                                    <span class="text-red-custom text-xs font-bold uppercase tracking-widest flex items-center gap-2">
+                                        <div class="w-1.5 h-1.5 rounded-full bg-red-custom"></div> Dispatch
                                     </span>
                                     <span class="text-gray-500 text-xs font-mono">${post.date}</span>
                                 </div>
-                                <h2 class="text-xl md:text-2xl font-bold text-white mb-3 leading-tight group-hover:text-accent transition">${post.title}</h2>
+                                <h2 class="text-xl md:text-2xl font-bold text-white mb-3 leading-tight group-hover:text-red-custom transition">${post.title}</h2>
                                 <p class="text-gray-400 text-sm leading-relaxed mb-4 line-clamp-2">${post.excerpt || ''}</p>
                                 <span class="text-gray-500 text-xs font-bold uppercase tracking-widest flex items-center gap-2 mt-auto">
                                     Read Full Report <i class="fa-solid fa-arrow-right group-hover:translate-x-2 transition"></i>
@@ -146,7 +147,6 @@
             }
         }
 
-        // Trigger fetch on load
         fetchMagazinePosts();
     </script>
 </body>

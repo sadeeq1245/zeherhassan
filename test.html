@@ -3,22 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zeher Hassan | Geo-Politics & Deep-Tech</title>
-    <link href="style.css" rel="stylesheet"> 
+    <title>Test Page | Zeher Hassan</title>
+    <script src="layout.js"></script>
+    <style>
+        /* Test page-specific styles to format target elements inside <main> */
+        .test-container {
+            padding: 40px 18px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        @media(min-width: 768px) {
+            .test-container { padding: 60px 36px; }
+        }
+        .test-header {
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 16px;
+        }
+        .test-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(28px, 5vw, 42px);
+            font-weight: 900;
+            color: var(--text-color);
+            margin-bottom: 8px;
+        }
+        .test-meta {
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            color: var(--red);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        .test-content p {
+            font-size: 15px;
+            line-height: 1.75;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
 
-<main>
-    <div class="sec-hd">
-        <span class="sec-title">Top <span>Stories</span></span>
-    </div>
-    
+    <main>
+        <div class="test-container">
+            <div class="test-header">
+                <h1 class="test-title">Modular Layout Core Engine Operational</h1>
+                <div class="test-meta">System Status: Verified // 2026 Audit Context</div>
+            </div>
+            
+            <div class="test-content">
+                <p>
+                    If you see this text surrounded by the dark/light header navigation, live running breaking news ticker, 
+                    responsive bottom mobile toolbar, and complete footer architecture, the <strong>layout.js</strong> configuration script 
+                    has compiled successfully.
+                </p>
+                <p>
+                    You can now create infinite new structural document pages (e.g., <code>about.html</code>, <code>contact.html</code>) 
+                    without copy-pasting code fragments. Simply include the <code>&lt;script src="layout.js"&gt;&lt;/script&gt;</code> 
+                    declaration inside the header parameters, define unique page structures inside the <code>&lt;main&gt;</code> context tag wrapper, and execute deployment safely.
+                </p>
+            </div>
+        </div>
     </main>
 
-<script src="layout.js"></script>
-
-<script>
-    // Example: loadPosts() goes here for index.html
-</script>
 </body>
 </html>

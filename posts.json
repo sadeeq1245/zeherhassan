@@ -1,9 +1,13 @@
+---
+---
 [
+  {% for post in site.posts %}
   {
-    "title": "Navigating the New Realities of US-Iran Geopolitics",
-    "url": "/posts/us-iran-conflict.html",
-    "date": "June 21, 2026",
-    "thumbnail": "/assets/us-iran-conflict.jpg",
-    "excerpt": "Analysis of recent tactical maneuvering in the Strait of Hormuz and a strategic shift in surrogate redlines that could redefine regional kinetic escalation."
-  }
+    "title": {{ post.title | jsonify }},
+    "url": {{ post.url | relative_url | jsonify }},
+    "date": "{{ post.date | date: "%B %d, %Y" }}",
+    "thumbnail": {{ post.thumbnail | jsonify }},
+    "excerpt": {{ post.excerpt | strip_html | truncatewords: 25 | jsonify }}
+  }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
 ]

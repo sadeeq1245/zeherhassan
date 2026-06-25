@@ -1,17 +1,17 @@
 <nav class="bottom-nav">
-    <a href="{{ '/' | relative_url }}" class="bnav-item active">
+    <a href="{{ '/' | relative_url }}" class="bnav-item {% if page.url == '/' %}active{% endif %}">
         <i class="fa-solid fa-house"></i>
         <span class="bnav-label">Home</span>
     </a>
-    <a href="{{ '/articles.html' | relative_url }}" class="bnav-item">
+    <a href="{{ '/articles.html' | relative_url }}" class="bnav-item {% if page.url == '/articles.html' or page.collection == 'posts' %}active{% endif %}">
         <i class="fa-solid fa-newspaper"></i>
         <span class="bnav-label">Articles</span>
     </a>
-    <a href="{{ '/news.html' | relative_url }}" class="bnav-item">
+    <a href="{{ '/news.html' | relative_url }}" class="bnav-item {% if page.url == '/news.html' %}active{% endif %}">
         <i class="fa-solid fa-wifi"></i>
         <span class="bnav-label">News</span>
     </a>
-    <a href="{{ '/about.html' | relative_url }}" class="bnav-item">
+    <a href="{{ '/about.html' | relative_url }}" class="bnav-item {% if page.url == '/about.html' %}active{% endif %}">
         <i class="fa-solid fa-user"></i>
         <span class="bnav-label">About</span>
     </a>

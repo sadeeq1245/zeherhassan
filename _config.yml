@@ -1,5 +1,26 @@
-title: "Zeher Hassan | Geo-Politics & Deep-Tech"
-email: "admin@zeherhassan.com"
-description: "Geo-Politics, Semiconductors, Deep-Tech, and Analysis."
-url: ""
-baseurl: "www.zeherhassan.com"
+title: "Zeher Hassan"
+tagline: "Geo-Politics & Deep-Tech"
+description: "Geo-Politics, Semiconductors, Deep-Tech, and In-Depth Analysis."
+url: "https://yourusername.github.io"  # Replace with your GitHub Pages URL or custom domain
+baseurl: ""                             # "" for username.github.io, "/repo-name" for project repos
+
+# Build
+markdown: kramdown
+highlighter: rouge
+
+# Post URLs → /articles/2026/06/25/iran-talks/
+permalink: /articles/:year/:month/:day/:title/
+
+# Excerpt: everything before <!--more--> in your post
+excerpt_separator: "<!--more-->"
+
+# GitHub Pages safe plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules

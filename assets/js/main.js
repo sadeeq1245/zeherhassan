@@ -1,47 +1,49 @@
 /* ── THEME TOGGLE ── */
 const themeToggleBtn = document.getElementById('themeToggleBtn');
-const currentTheme = localStorage.getItem('theme') || 'dark';
+const savedTheme = localStorage.getItem('theme') || 'dark';
 
-// Apply saved theme on load
-if (currentTheme === 'light') {
+if (savedTheme === 'light') {
     document.documentElement.setAttribute('data-theme', 'light');
 }
 
-themeToggleBtn.addEventListener('click', () => {
-    let theme = document.documentElement.getAttribute('data-theme');
-    if (theme === 'light') {
-        document.documentElement.removeAttribute('data-theme');
-        localStorage.setItem('theme', 'dark');
-    } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-        localStorage.setItem('theme', 'light');
-    }
-});
+if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme');
+        if (current === 'light') {
+            document.documentElement.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+        }
+    });
+}
 
 /* ── MENU ── */
 const menuBtn     = document.getElementById('menuBtn');
 const menuClose   = document.getElementById('menuClose');
 const menuOverlay = document.getElementById('menuOverlay');
 
-if(menuBtn && menuClose && menuOverlay) {
+if (menuBtn && menuClose && menuOverlay) {
     menuBtn.addEventListener('click', () => {
         menuOverlay.classList.add('open');
         document.body.style.overflow = 'hidden';
     });
-    
     [menuClose, menuOverlay].forEach(el => el.addEventListener('click', e => {
         if (e.target === menuOverlay || e.target === menuClose || menuClose.contains(e.target)) {
             menuOverlay.classList.remove('open');
             document.body.style.overflow = '';
         }
     }));
-    
     document.addEventListener('keydown', e => {
-        if (e.key === 'Escape') { menuOverlay.classList.remove('open'); document.body.style.overflow = ''; }
+        if (e.key === 'Escape') {
+            menuOverlay.classList.remove('open');
+            document.body.style.overflow = '';
+        }
     });
 }
 
-/* ── TICKER ── */
+/* ── BREAKING TICKER ── */
 const headlines = [
     'US-Iran ceasefire negotiations collapse amid Gulf tensions',
     'NVIDIA unveils next-generation AI chip architecture',
@@ -53,21 +55,22 @@ const headlines = [
     'OpenAI raises $40B at record valuation',
 ];
 const track = document.getElementById('tickerTrack');
-if(track) {
+if (track) {
     track.innerHTML = [...headlines, ...headlines]
         .map(h => `<span class="ticker-item">${h} <span class="ticker-sep">//</span></span>`)
         .join('');
 }
 
-/* ── ARTICLES ── */
+/* ── HOMEPAGE: LOAD POSTS ── */
 async function loadPosts() {
     const heroWrap    = document.getElementById('heroWrap');
     const articleGrid = document.getElementById('articleGrid');
-    
-    if(!heroWrap || !articleGrid) return; // Only run on pages that have these grids
-    
+
+    // Only run on the homepage
+    if (!heroWrap || !articleGrid) return;
+
     try {
-        const res   = await fetch('/posts.json');
+        const res = await fetch('/posts.json');
         if (!res.ok) throw new Error('posts.json not found');
         const posts = await res.json();
 
@@ -76,9 +79,10 @@ async function loadPosts() {
             return;
         }
 
-        /* hero */
+        /* ── HERO ── */
         const hero  = posts[0];
         const sides = posts.slice(1, 3);
+
         heroWrap.innerHTML = `
             <a href="${hero.url}" class="hero-main">
                 <img src="${hero.thumbnail}" alt="${hero.title}" onerror="this.style.display='none'">
@@ -99,13 +103,13 @@ async function loadPosts() {
                         <img class="side-thumb" src="${p.thumbnail}" alt="${p.title}" onerror="this.style.display='none'">
                         <div class="hero-cat" style="width:fit-content;"><span class="hero-cat-dot"></span>News</div>
                         <h3 class="side-h3">${p.title}</h3>
-                        <p class="side-excerpt">${(p.excerpt||'').slice(0,95)}&hellip;</p>
+                        <p class="side-excerpt">${(p.excerpt || '').slice(0, 95)}&hellip;</p>
                         <div class="side-date">${p.date}</div>
                     </a>
                 `).join('')}
             </div>`;
 
-        /* grid */
+        /* ── GRID ── */
         const rest = posts.slice(3);
         if (!rest.length) return;
         articleGrid.innerHTML = rest.map(p => `
@@ -117,7 +121,7 @@ async function loadPosts() {
                 <div class="card-body">
                     <div class="hero-cat" style="width:fit-content;"><span class="hero-cat-dot"></span>News</div>
                     <h3 class="card-h3">${p.title}</h3>
-                    <p class="card-excerpt">${(p.excerpt||'').slice(0,105)}&hellip;</p>
+                    <p class="card-excerpt">${(p.excerpt || '').slice(0, 105)}&hellip;</p>
                     <div class="card-footer">
                         <span>${p.date}</span>
                         <span class="card-arrow">Read &rarr;</span>
@@ -125,7 +129,7 @@ async function loadPosts() {
                 </div>
             </a>`).join('');
 
-    } catch(err) {
+    } catch (err) {
         heroWrap.innerHTML = `<div class="loading-msg" style="color:var(--red);">Error: ${err.message}</div>`;
     }
 }

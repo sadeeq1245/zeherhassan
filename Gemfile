@@ -5,5 +5,6 @@ gem "jekyll-feed", "~> 0.17"
 gem "jekyll-seo-tag", "~> 2.8"
 gem "sass-embedded", "~> 1.0" 
 
-# Add this line to fix the Ruby 3.4+ compatibility issue
+# Fixes for Ruby 3.4+ missing standard libraries
 gem "csv"
+gem "base64"

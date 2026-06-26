@@ -1,0 +1,22 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+{% if page.title %}
+  <title>{{ page.title }} — {{ site.title }}</title>
+  <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | strip_newlines | truncatewords: 30 }}">
+{% else %}
+  <title>{{ site.title }} | {{ site.tagline }}</title>
+  <meta name="description" content="{{ site.description }}">
+{% endif %}
+
+<meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+<meta property="og:description" content="{{ page.excerpt | default: site.description | strip_html | strip_newlines | truncatewords: 30 }}">
+{% if page.thumbnail %}<meta property="og:image" content="{{ page.thumbnail }}">{% endif %}
+<meta property="og:type" content="{% if layout.name == 'post' %}article{% else %}website{% endif %}">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/png" href="{{ '/favicon.png' | relative_url }}">
+<link rel="apple-touch-icon" href="{{ '/favicon.png' | relative_url }}">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">

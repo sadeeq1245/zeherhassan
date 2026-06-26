@@ -1,0 +1,17 @@
+title: "Zeher Hassan"
+tagline: "Geo-Politics & Deep-Tech"
+description: "In-depth analysis of geopolitics, semiconductors, AI, and the forces reshaping the modern world."
+url: "https://zeherhassan.com"
+baseurl: ""
+
+markdown: kramdown
+permalink: /articles/:year/:month/:day/:title/
+excerpt_separator: "<!--more-->"
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+exclude:
+  - README.md
+  - Gemfile.lock

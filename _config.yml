@@ -4,6 +4,8 @@ description: "In-depth analysis of geopolitics, semiconductors, AI, and the forc
 url: "https://zeherhassan.com"
 baseurl: ""
 
+future: true          ← ADD THIS LINE
+
 markdown: kramdown
 permalink: /articles/:year/:month/:day/:title/
 excerpt_separator: "<!--more-->"
